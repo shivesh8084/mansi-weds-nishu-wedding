@@ -407,26 +407,55 @@ section {
     margin-right: 4px;
 }
 
+/* --- UPDATED PHOTO SLIDER STYLES --- */
 .slider-container {
     width: 100%;
+    height: 250px; /* फिक्स्ड फ्रेम हाइट */
     position: relative;
     overflow: hidden;
     border-radius: 12px;
     border: 2px solid #ffd700;
     margin: 10px 0;
+    background-color: #000;
 }
 
 .slide {
     display: none;
     width: 100%;
-    height: 190px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: cover; /* इमेज को बिना डिस्टॉर्ट किए फ्रेम में सेट करेगा */
+    object-position: center; /* इमेज के सेंटर को फोकस रखेगा */
 }
 
 .slide.active {
     display: block;
 }
 
+/* Next/Prev Controls */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffd700;
+    border: 1px solid #ffd700;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s ease;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: #ffd700;
+    color: #8B0000;
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* --- FORM & OTHER STYLES --- */
 .wish-form {
     width: 100%;
     display: flex;
