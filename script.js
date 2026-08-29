@@ -4,7 +4,7 @@
 
 
 /* ==========================================
-   OPEN INVITATION + MUSIC
+   OPEN INVITATION
 ========================================== */
 
 function openInvitation() {
@@ -18,31 +18,33 @@ function openInvitation() {
     const icon =
         document.getElementById("musicIcon");
 
-
     if (!overlay) return;
 
 
-    music.play()
-        .then(() => {
-
-            icon.classList.remove("fa-music");
-
-            icon.classList.add("fa-volume-high");
-
-        })
-        .catch(error => {
-
-            console.log(
-                "Music autoplay error:",
-                error
-            );
-
-        });
-
-
     overlay.classList.add("opened");
-}
 
+
+    if (music) {
+
+        music.play()
+            .then(() => {
+
+                if (icon) {
+
+                    icon.classList.remove("fa-music");
+                    icon.classList.add("fa-volume-high");
+
+                }
+
+            })
+            .catch(() => {
+
+                console.log("Music requires user interaction.");
+
+            });
+
+    }
+}
 
 window.openInvitation = openInvitation;
 
@@ -50,26 +52,6 @@ window.openInvitation = openInvitation;
 /* ==========================================
    COUNTDOWN
 ========================================== */
-
-/*
-   IMPORTANT:
-
-   Countdown 26 November 2026 ke START par
-   zero hoga.
-
-   Isliye target time:
-   November 26, 2026 00:00:00
-
-   Jaise hi 26 November start hoga:
-
-   00 Days
-   00 Hours
-   00 Minutes
-   00 Seconds
-
-   dikhega aur special wedding message
-   bhi show hoga.
-*/
 
 const weddingDate =
     new Date(
@@ -112,16 +94,11 @@ function updateCountdown() {
     }
 
 
-    /*
-       26 NOVEMBER START HO GAYA
-    */
+    /* ======================================
+       WEDDING DAY ARRIVED
+    ====================================== */
 
     if (distance <= 0) {
-
-        /*
-           Countdown boxes ko remove nahi karna.
-           Sirf 0000 karna hai.
-        */
 
         daysElement.innerText = "00";
         hoursElement.innerText = "00";
@@ -129,24 +106,15 @@ function updateCountdown() {
         secsElement.innerText = "00";
 
 
-        /*
-           Special wedding message show hoga.
-        */
-
         if (weddingMessage) {
 
             weddingMessage.classList.add("show");
 
         }
 
-
         return;
     }
 
-
-    /*
-       26 NOVEMBER SE PEHLE
-    */
 
     if (weddingMessage) {
 
@@ -165,7 +133,7 @@ function updateCountdown() {
     const hours =
         Math.floor(
             (distance %
-            (1000 * 60 * 60 * 24)) /
+                (1000 * 60 * 60 * 24)) /
             (1000 * 60 * 60)
         );
 
@@ -173,7 +141,7 @@ function updateCountdown() {
     const mins =
         Math.floor(
             (distance %
-            (1000 * 60 * 60)) /
+                (1000 * 60 * 60)) /
             (1000 * 60)
         );
 
@@ -181,7 +149,7 @@ function updateCountdown() {
     const secs =
         Math.floor(
             (distance %
-            (1000 * 60)) /
+                (1000 * 60)) /
             1000
         );
 
@@ -189,14 +157,11 @@ function updateCountdown() {
     daysElement.innerText =
         days.toString().padStart(2, "0");
 
-
     hoursElement.innerText =
         hours.toString().padStart(2, "0");
 
-
     minsElement.innerText =
         mins.toString().padStart(2, "0");
-
 
     secsElement.innerText =
         secs.toString().padStart(2, "0");
@@ -208,11 +173,9 @@ setInterval(
     1000
 );
 
-updateCountdown();
-
 
 /* ==========================================
-   MUSIC TOGGLE
+   MUSIC
 ========================================== */
 
 function toggleMusic(event) {
@@ -237,21 +200,13 @@ function toggleMusic(event) {
         music.play()
             .then(() => {
 
-                icon.classList.remove(
-                    "fa-music"
-                );
-
-                icon.classList.add(
-                    "fa-volume-high"
-                );
+                icon.classList.remove("fa-music");
+                icon.classList.add("fa-volume-high");
 
             })
-            .catch(error => {
+            .catch(() => {
 
-                console.log(
-                    "Music play error:",
-                    error
-                );
+                console.log("Music play error.");
 
             });
 
@@ -259,16 +214,11 @@ function toggleMusic(event) {
 
         music.pause();
 
-        icon.classList.remove(
-            "fa-volume-high"
-        );
+        icon.classList.remove("fa-volume-high");
+        icon.classList.add("fa-music");
 
-        icon.classList.add(
-            "fa-music"
-        );
     }
 }
-
 
 window.toggleMusic = toggleMusic;
 
@@ -278,15 +228,13 @@ window.toggleMusic = toggleMusic;
 ========================================== */
 
 let slideIndex = 0;
-
 let sliderTimer;
 
 
 function getSlides() {
 
-    return document.querySelectorAll(
-        ".slide"
-    );
+    return document.querySelectorAll(".slide");
+
 }
 
 
@@ -303,17 +251,15 @@ function showSlide(index) {
     }
 
     if (index < 0) {
-        slideIndex =
-            slides.length - 1;
+        slideIndex = slides.length - 1;
     }
 
 
-    slides.forEach(
-        slide =>
-            slide.classList.remove(
-                "active"
-            )
-    );
+    slides.forEach(slide => {
+
+        slide.classList.remove("active");
+
+    });
 
 
     slides[slideIndex]
@@ -352,9 +298,7 @@ function restartSlider() {
 function createSliderDots() {
 
     const dotsContainer =
-        document.getElementById(
-            "sliderDots"
-        );
+        document.getElementById("sliderDots");
 
     const slides =
         getSlides();
@@ -365,33 +309,28 @@ function createSliderDots() {
     dotsContainer.innerHTML = "";
 
 
-    slides.forEach(
-        (slide, index) => {
+    slides.forEach((slide, index) => {
 
-            const dot =
-                document.createElement(
-                    "span"
-                );
+        const dot =
+            document.createElement("span");
 
-            dot.className =
-                "slider-dot";
+        dot.className = "slider-dot";
 
 
-            dot.onclick = () => {
+        dot.onclick = () => {
 
-                slideIndex = index;
+            slideIndex = index;
 
-                showSlide(slideIndex);
+            showSlide(slideIndex);
 
-                restartSlider();
+            restartSlider();
 
-            };
+        };
 
 
-            dotsContainer.appendChild(dot);
+        dotsContainer.appendChild(dot);
 
-        }
-    );
+    });
 
 
     updateSliderDots();
@@ -401,28 +340,23 @@ function createSliderDots() {
 function updateSliderDots() {
 
     const dots =
-        document.querySelectorAll(
-            ".slider-dot"
-        );
+        document.querySelectorAll(".slider-dot");
 
 
-    dots.forEach(
-        dot =>
-            dot.classList.remove(
-                "active-dot"
-            )
-    );
+    dots.forEach(dot => {
+
+        dot.classList.remove("active-dot");
+
+    });
 
 
     if (dots[slideIndex]) {
 
         dots[slideIndex]
-            .classList.add(
-                "active-dot"
-            );
+            .classList.add("active-dot");
+
     }
 }
-
 
 window.changeSlide = changeSlide;
 
@@ -434,13 +368,9 @@ window.changeSlide = changeSlide;
 const galleryImages = [
 
     "photo1.jpeg",
-
     "photo2.jpeg",
-
     "photo3.jpeg",
-
     "photo4.jpeg",
-
     "photo5.jpeg"
 
 ];
@@ -452,10 +382,7 @@ let galleryIndex = 0;
 function openPreWedding() {
 
     const modal =
-        document.getElementById(
-            "preWeddingModal"
-        );
-
+        document.getElementById("preWeddingModal");
 
     if (!modal) return;
 
@@ -473,10 +400,7 @@ function openPreWedding() {
 function closePreWedding() {
 
     const modal =
-        document.getElementById(
-            "preWeddingModal"
-        );
-
+        document.getElementById("preWeddingModal");
 
     if (!modal) return;
 
@@ -490,19 +414,13 @@ function closePreWedding() {
 function updateGallery() {
 
     const image =
-        document.getElementById(
-            "galleryMainImage"
-        );
+        document.getElementById("galleryMainImage");
 
     const counter =
-        document.getElementById(
-            "galleryCounter"
-        );
+        document.getElementById("galleryCounter");
 
     const thumbnails =
-        document.querySelectorAll(
-            ".thumb"
-        );
+        document.querySelectorAll(".thumb");
 
 
     if (!image || !counter) return;
@@ -514,9 +432,7 @@ function updateGallery() {
     setTimeout(() => {
 
         image.src =
-            galleryImages[
-                galleryIndex
-            ];
+            galleryImages[galleryIndex];
 
         image.style.opacity = "1";
 
@@ -527,20 +443,18 @@ function updateGallery() {
         `${galleryIndex + 1} / ${galleryImages.length}`;
 
 
-    thumbnails.forEach(
-        thumb =>
-            thumb.classList.remove(
-                "active-thumb"
-            )
-    );
+    thumbnails.forEach(thumb => {
+
+        thumb.classList.remove("active-thumb");
+
+    });
 
 
     if (thumbnails[galleryIndex]) {
 
         thumbnails[galleryIndex]
-            .classList.add(
-                "active-thumb"
-            );
+            .classList.add("active-thumb");
+
     }
 }
 
@@ -556,6 +470,7 @@ function changeGallery(direction) {
     ) {
 
         galleryIndex = 0;
+
     }
 
 
@@ -563,6 +478,7 @@ function changeGallery(direction) {
 
         galleryIndex =
             galleryImages.length - 1;
+
     }
 
 
@@ -575,8 +491,8 @@ function selectGallery(index) {
     galleryIndex = index;
 
     updateGallery();
-}
 
+}
 
 window.openPreWedding = openPreWedding;
 window.closePreWedding = closePreWedding;
@@ -585,7 +501,7 @@ window.selectGallery = selectGallery;
 
 
 /* ==========================================
-   CLOSE MODAL WHEN OUTSIDE CLICK
+   MODAL OUTSIDE CLICK
 ========================================== */
 
 document.addEventListener(
@@ -593,9 +509,7 @@ document.addEventListener(
     function(event) {
 
         const modal =
-            document.getElementById(
-                "preWeddingModal"
-            );
+            document.getElementById("preWeddingModal");
 
 
         if (
@@ -604,6 +518,7 @@ document.addEventListener(
         ) {
 
             closePreWedding();
+
         }
 
     }
@@ -611,7 +526,7 @@ document.addEventListener(
 
 
 /* ==========================================
-   ESC KEY CLOSE
+   ESC KEY
 ========================================== */
 
 document.addEventListener(
@@ -629,50 +544,51 @@ document.addEventListener(
 
 
 /* ==========================================
-   SWIPE SUPPORT FOR PRE-WEDDING
+   GALLERY SWIPE
 ========================================== */
 
 let touchStartX = 0;
-
 let touchEndX = 0;
 
 
-const galleryViewer =
-    document.querySelector(
-        ".gallery-viewer"
-    );
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const galleryViewer =
+            document.querySelector(".gallery-viewer");
 
 
-if (galleryViewer) {
-
-    galleryViewer.addEventListener(
-        "touchstart",
-        function(event) {
-
-            touchStartX =
-                event.changedTouches[0]
-                .screenX;
-
-        },
-        { passive: true }
-    );
+        if (!galleryViewer) return;
 
 
-    galleryViewer.addEventListener(
-        "touchend",
-        function(event) {
+        galleryViewer.addEventListener(
+            "touchstart",
+            function(event) {
 
-            touchEndX =
-                event.changedTouches[0]
-                .screenX;
+                touchStartX =
+                    event.changedTouches[0].screenX;
+
+            },
+            { passive: true }
+        );
 
 
-            handleSwipe();
+        galleryViewer.addEventListener(
+            "touchend",
+            function(event) {
 
-        },
-        { passive: true }
-    );
-}
+                touchEndX =
+                    event.changedTouches[0].screenX;
+
+                handleSwipe();
+
+            },
+            { passive: true }
+        );
+
+    }
+);
 
 
 function handleSwipe() {
@@ -699,7 +615,7 @@ function handleSwipe() {
 
 
 /* ==========================================
-   WHATSAPP WISHES
+   WHATSAPP
 ========================================== */
 
 function sendToWhatsApp(event) {
@@ -708,21 +624,16 @@ function sendToWhatsApp(event) {
 
 
     const name =
-        document.getElementById(
-            "wishName"
-        ).value.trim();
-
+        document.getElementById("wishName")
+            .value.trim();
 
     const phone =
-        document.getElementById(
-            "wishPhone"
-        ).value.trim();
-
+        document.getElementById("wishPhone")
+            .value.trim();
 
     const message =
-        document.getElementById(
-            "wishMessage"
-        ).value.trim();
+        document.getElementById("wishMessage")
+            .value.trim();
 
 
     const targetNumber =
@@ -731,7 +642,7 @@ function sendToWhatsApp(event) {
 
     const whatsappMessage =
 
-        `💐 Wedding Blessings 💐
+`💐 Wedding Blessings 💐
 
 Name: ${name}
 
@@ -746,9 +657,7 @@ Mansi ❤️ Dr. Nishu
 
     const whatsappUrl =
         `https://wa.me/${targetNumber}?text=` +
-        encodeURIComponent(
-            whatsappMessage
-        );
+        encodeURIComponent(whatsappMessage);
 
 
     window.open(
@@ -757,8 +666,8 @@ Mansi ❤️ Dr. Nishu
     );
 }
 
-
-window.sendToWhatsApp = sendToWhatsApp;
+window.sendToWhatsApp =
+    sendToWhatsApp;
 
 
 /* ==========================================
