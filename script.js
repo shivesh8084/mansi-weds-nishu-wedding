@@ -1,12 +1,12 @@
-/* =====================================================
-   MANSI & DR. NISHU WEDDING INVITATION
-   JAVASCRIPT
-===================================================== */
+/* ==========================================
+   WEDDING INVITATION JAVASCRIPT
+   MANSI & DR. NISHU
+========================================== */
 
 
-/* =====================================================
-   TAP TO OPEN + MUSIC
-===================================================== */
+/* ==========================================
+   OPEN INVITATION + MUSIC
+========================================== */
 
 function openInvitation() {
 
@@ -23,8 +23,16 @@ function openInvitation() {
     if (!overlay) return;
 
 
+    /*
+       Welcome screen hide
+    */
+
     overlay.classList.add("opened");
 
+
+    /*
+       Music start
+    */
 
     if (music) {
 
@@ -33,7 +41,9 @@ function openInvitation() {
 
                 if (icon) {
 
-                    icon.classList.remove("fa-music");
+                    icon.classList.remove(
+                        "fa-music"
+                    );
 
                     icon.classList.add(
                         "fa-volume-high"
@@ -51,6 +61,7 @@ function openInvitation() {
             });
 
     }
+
 }
 
 
@@ -58,9 +69,18 @@ window.openInvitation =
     openInvitation;
 
 
-/* =====================================================
+
+/* ==========================================
    COUNTDOWN
-===================================================== */
+========================================== */
+
+
+/*
+   Wedding starts:
+
+   26 November 2026
+   00:00:00
+*/
 
 const weddingDate =
     new Date(
@@ -70,8 +90,10 @@ const weddingDate =
 
 function updateCountdown() {
 
+
     const now =
         new Date().getTime();
+
 
     const distance =
         weddingDate - now;
@@ -80,14 +102,18 @@ function updateCountdown() {
     const daysElement =
         document.getElementById("days");
 
+
     const hoursElement =
         document.getElementById("hours");
+
 
     const minsElement =
         document.getElementById("mins");
 
+
     const secsElement =
         document.getElementById("secs");
+
 
     const weddingMessage =
         document.getElementById(
@@ -107,19 +133,27 @@ function updateCountdown() {
     }
 
 
-    /* =============================================
-       WEDDING DAY
-    ============================================= */
+    /*
+       WEDDING DAY ARRIVED
+    */
 
     if (distance <= 0) {
 
-        daysElement.innerText = "00";
 
-        hoursElement.innerText = "00";
+        daysElement.innerText =
+            "00";
 
-        minsElement.innerText = "00";
 
-        secsElement.innerText = "00";
+        hoursElement.innerText =
+            "00";
+
+
+        minsElement.innerText =
+            "00";
+
+
+        secsElement.innerText =
+            "00";
 
 
         if (weddingMessage) {
@@ -130,10 +164,15 @@ function updateCountdown() {
 
         }
 
+
         return;
 
     }
 
+
+    /*
+       BEFORE WEDDING DAY
+    */
 
     if (weddingMessage) {
 
@@ -182,19 +221,28 @@ function updateCountdown() {
 
 
     daysElement.innerText =
-        days.toString().padStart(2, "0");
+        days
+            .toString()
+            .padStart(2, "0");
 
 
     hoursElement.innerText =
-        hours.toString().padStart(2, "0");
+        hours
+            .toString()
+            .padStart(2, "0");
 
 
     minsElement.innerText =
-        mins.toString().padStart(2, "0");
+        mins
+            .toString()
+            .padStart(2, "0");
 
 
     secsElement.innerText =
-        secs.toString().padStart(2, "0");
+        secs
+            .toString()
+            .padStart(2, "0");
+
 }
 
 
@@ -204,11 +252,13 @@ setInterval(
 );
 
 
-/* =====================================================
+
+/* ==========================================
    MUSIC TOGGLE
-===================================================== */
+========================================== */
 
 function toggleMusic(event) {
+
 
     if (event) {
 
@@ -220,50 +270,64 @@ function toggleMusic(event) {
     const music =
         document.getElementById("bgMusic");
 
+
     const icon =
         document.getElementById("musicIcon");
 
 
-    if (!music || !icon) return;
+    if (!music || !icon) {
+
+        return;
+
+    }
 
 
     if (music.paused) {
 
+
         music.play()
             .then(() => {
+
 
                 icon.classList.remove(
                     "fa-music"
                 );
 
+
                 icon.classList.add(
                     "fa-volume-high"
                 );
 
+
             })
             .catch(() => {
+
 
                 console.log(
                     "Music play error."
                 );
 
+
             });
 
-    }
 
-    else {
+    } else {
+
 
         music.pause();
+
 
         icon.classList.remove(
             "fa-volume-high"
         );
+
 
         icon.classList.add(
             "fa-music"
         );
 
     }
+
 }
 
 
@@ -271,9 +335,10 @@ window.toggleMusic =
     toggleMusic;
 
 
-/* =====================================================
+
+/* ==========================================
    MAIN PHOTO SLIDER
-===================================================== */
+========================================== */
 
 let slideIndex = 0;
 
@@ -291,11 +356,16 @@ function getSlides() {
 
 function showSlide(index) {
 
+
     const slides =
         getSlides();
 
 
-    if (!slides.length) return;
+    if (!slides.length) {
+
+        return;
+
+    }
 
 
     if (index >= slides.length) {
@@ -337,9 +407,14 @@ function showSlide(index) {
 
 function changeSlide(direction) {
 
+
     slideIndex += direction;
 
-    showSlide(slideIndex);
+
+    showSlide(
+        slideIndex
+    );
+
 
     restartSlider();
 
@@ -347,6 +422,7 @@ function changeSlide(direction) {
 
 
 function restartSlider() {
+
 
     clearInterval(
         sliderTimer
@@ -372,23 +448,31 @@ function restartSlider() {
 
 function createSliderDots() {
 
+
     const dotsContainer =
         document.getElementById(
             "sliderDots"
         );
 
+
     const slides =
         getSlides();
 
 
-    if (!dotsContainer) return;
+    if (!dotsContainer) {
+
+        return;
+
+    }
 
 
-    dotsContainer.innerHTML = "";
+    dotsContainer.innerHTML =
+        "";
 
 
     slides.forEach(
         (slide, index) => {
+
 
             const dot =
                 document.createElement(
@@ -400,18 +484,22 @@ function createSliderDots() {
                 "slider-dot";
 
 
-            dot.onclick = () => {
+            dot.onclick =
+                () => {
 
-                slideIndex =
-                    index;
 
-                showSlide(
-                    slideIndex
-                );
+                    slideIndex =
+                        index;
 
-                restartSlider();
 
-            };
+                    showSlide(
+                        slideIndex
+                    );
+
+
+                    restartSlider();
+
+                };
 
 
             dotsContainer.appendChild(
@@ -428,6 +516,7 @@ function createSliderDots() {
 
 
 function updateSliderDots() {
+
 
     const dots =
         document.querySelectorAll(
@@ -462,16 +551,21 @@ window.changeSlide =
     changeSlide;
 
 
-/* =====================================================
+
+/* ==========================================
    PRE-WEDDING GALLERY
-===================================================== */
+========================================== */
 
 const galleryImages = [
 
     "photo1.jpeg",
+
     "photo2.jpeg",
+
     "photo3.jpeg",
+
     "photo4.jpeg",
+
     "photo5.jpeg"
 
 ];
@@ -480,7 +574,9 @@ const galleryImages = [
 let galleryIndex = 0;
 
 
+
 function openPreWedding() {
+
 
     const modal =
         document.getElementById(
@@ -488,7 +584,11 @@ function openPreWedding() {
         );
 
 
-    if (!modal) return;
+    if (!modal) {
+
+        return;
+
+    }
 
 
     modal.classList.add(
@@ -508,7 +608,9 @@ function openPreWedding() {
 }
 
 
+
 function closePreWedding() {
+
 
     const modal =
         document.getElementById(
@@ -516,7 +618,11 @@ function closePreWedding() {
         );
 
 
-    if (!modal) return;
+    if (!modal) {
+
+        return;
+
+    }
 
 
     modal.classList.remove(
@@ -530,17 +636,21 @@ function closePreWedding() {
 }
 
 
+
 function updateGallery() {
+
 
     const image =
         document.getElementById(
             "galleryMainImage"
         );
 
+
     const counter =
         document.getElementById(
             "galleryCounter"
         );
+
 
     const thumbnails =
         document.querySelectorAll(
@@ -548,7 +658,11 @@ function updateGallery() {
         );
 
 
-    if (!image || !counter) return;
+    if (!image || !counter) {
+
+        return;
+
+    }
 
 
     image.style.opacity =
@@ -558,13 +672,16 @@ function updateGallery() {
     setTimeout(
         () => {
 
+
             image.src =
                 galleryImages[
                     galleryIndex
                 ];
 
+
             image.style.opacity =
                 "1";
+
 
         },
         120
@@ -586,9 +703,7 @@ function updateGallery() {
     );
 
 
-    if (
-        thumbnails[galleryIndex]
-    ) {
+    if (thumbnails[galleryIndex]) {
 
         thumbnails[galleryIndex]
             .classList.add(
@@ -600,9 +715,12 @@ function updateGallery() {
 }
 
 
+
 function changeGallery(direction) {
 
-    galleryIndex += direction;
+
+    galleryIndex +=
+        direction;
 
 
     if (
@@ -610,12 +728,15 @@ function changeGallery(direction) {
         galleryImages.length
     ) {
 
-        galleryIndex = 0;
+        galleryIndex =
+            0;
 
     }
 
 
-    if (galleryIndex < 0) {
+    if (
+        galleryIndex < 0
+    ) {
 
         galleryIndex =
             galleryImages.length - 1;
@@ -628,9 +749,23 @@ function changeGallery(direction) {
 }
 
 
+
 function selectGallery(index) {
 
-    galleryIndex = index;
+
+    if (
+        index < 0 ||
+        index >= galleryImages.length
+    ) {
+
+        return;
+
+    }
+
+
+    galleryIndex =
+        index;
+
 
     updateGallery();
 
@@ -640,23 +775,28 @@ function selectGallery(index) {
 window.openPreWedding =
     openPreWedding;
 
+
 window.closePreWedding =
     closePreWedding;
 
+
 window.changeGallery =
     changeGallery;
+
 
 window.selectGallery =
     selectGallery;
 
 
-/* =====================================================
-   CLOSE MODAL
-===================================================== */
+
+/* ==========================================
+   MODAL OUTSIDE CLICK
+========================================== */
 
 document.addEventListener(
     "click",
     function(event) {
+
 
         const modal =
             document.getElementById(
@@ -677,9 +817,15 @@ document.addEventListener(
 );
 
 
+
+/* ==========================================
+   ESC KEY
+========================================== */
+
 document.addEventListener(
     "keydown",
     function(event) {
+
 
         if (
             event.key === "Escape"
@@ -693,9 +839,10 @@ document.addEventListener(
 );
 
 
-/* =====================================================
+
+/* ==========================================
    GALLERY SWIPE
-===================================================== */
+========================================== */
 
 let touchStartX = 0;
 
@@ -706,22 +853,30 @@ document.addEventListener(
     "DOMContentLoaded",
     function() {
 
+
         const galleryViewer =
             document.querySelector(
                 ".gallery-viewer"
             );
 
 
-        if (!galleryViewer) return;
+        if (!galleryViewer) {
+
+            return;
+
+        }
 
 
         galleryViewer.addEventListener(
             "touchstart",
             function(event) {
 
+
                 touchStartX =
-                    event.changedTouches[0]
-                    .screenX;
+                    event
+                        .changedTouches[0]
+                        .screenX;
+
 
             },
             {
@@ -734,9 +889,11 @@ document.addEventListener(
             "touchend",
             function(event) {
 
+
                 touchEndX =
-                    event.changedTouches[0]
-                    .screenX;
+                    event
+                        .changedTouches[0]
+                        .screenX;
 
 
                 handleSwipe();
@@ -751,7 +908,9 @@ document.addEventListener(
 );
 
 
+
 function handleSwipe() {
+
 
     const difference =
         touchStartX -
@@ -771,9 +930,7 @@ function handleSwipe() {
 
         changeGallery(1);
 
-    }
-
-    else {
+    } else {
 
         changeGallery(-1);
 
@@ -782,32 +939,40 @@ function handleSwipe() {
 }
 
 
-/* =====================================================
+
+/* ==========================================
    WHATSAPP WISHES
-===================================================== */
+========================================== */
 
 function sendToWhatsApp(event) {
+
 
     event.preventDefault();
 
 
     const name =
         document
-            .getElementById("wishName")
+            .getElementById(
+                "wishName"
+            )
             .value
             .trim();
 
 
     const phone =
         document
-            .getElementById("wishPhone")
+            .getElementById(
+                "wishPhone"
+            )
             .value
             .trim();
 
 
     const message =
         document
-            .getElementById("wishMessage")
+            .getElementById(
+                "wishMessage"
+            )
             .value
             .trim();
 
@@ -832,7 +997,9 @@ Mansi ❤️ Dr. Nishu
 
 
     const whatsappUrl =
+
         `https://wa.me/${targetNumber}?text=` +
+
         encodeURIComponent(
             whatsappMessage
         );
@@ -850,13 +1017,19 @@ window.sendToWhatsApp =
     sendToWhatsApp;
 
 
-/* =====================================================
+
+/* ==========================================
    PAGE LOAD
-===================================================== */
+========================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
+
+
+        /*
+           Slider
+        */
 
         createSliderDots();
 
@@ -864,9 +1037,20 @@ document.addEventListener(
 
         restartSlider();
 
+
+        /*
+           Gallery
+        */
+
         updateGallery();
 
+
+        /*
+           Countdown
+        */
+
         updateCountdown();
+
 
     }
 );
