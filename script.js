@@ -1,10 +1,11 @@
-/* =====================================================
-   WEDDING WEBSITE
-   MANSI & DR. NISHU
-===================================================== */
+/* ==========================================
+   WEDDING INVITATION JAVASCRIPT
+========================================== */
 
 
-/* ================= OPEN INVITATION ================= */
+/* ==========================================
+   OPEN INVITATION + MUSIC
+========================================== */
 
 function openInvitation() {
 
@@ -26,10 +27,11 @@ function openInvitation() {
             icon.classList.add("fa-volume-high");
 
         })
-        .catch(() => {
+        .catch(error => {
 
             console.log(
-                "Music autoplay blocked by browser."
+                "Music autoplay error:",
+                error
             );
 
         });
@@ -37,131 +39,112 @@ function openInvitation() {
 
     overlay.style.opacity = "0";
 
-    overlay.style.visibility = "hidden";
-
     setTimeout(() => {
 
         overlay.style.display = "none";
 
-    }, 700);
-
+    }, 600);
 }
 
 
-/* ================= COUNTDOWN ================= */
+
+/* ==========================================
+   COUNTDOWN
+========================================== */
 
 const weddingDate =
     new Date(
-        "November 26, 2026 00:00:00"
+        "November 26, 2026 19:00:00"
     ).getTime();
 
 
-const countdownTimer =
-    setInterval(function () {
+function updateCountdown() {
 
-        const now =
-            new Date().getTime();
+    const now =
+        new Date().getTime();
 
-        const distance =
-            weddingDate - now;
-
-
-        if (distance <= 0) {
-
-            clearInterval(countdownTimer);
-
-            const grid =
-                document.querySelector(
-                    ".countdown-grid"
-                );
-
-            if (grid) {
-
-                grid.innerHTML =
-                    `
-                    <div class="wedding-arrived">
-                        ❤️ The Wedding Day Has Arrived! ❤️
-                    </div>
-                    `;
-
-            }
-
-            return;
-        }
+    const distance =
+        weddingDate - now;
 
 
-        const days =
-            Math.floor(
-                distance /
-                (1000 * 60 * 60 * 24)
-            );
+    if (distance <= 0) {
+
+        document.querySelector(
+            ".countdown-grid"
+        ).innerHTML = `
+            <h3 style="
+                color:#ffd700;
+                font-family:'Cinzel',serif;
+            ">
+                The Wedding Day Has Arrived! ❤️
+            </h3>
+        `;
+
+        return;
+    }
 
 
-        const hours =
-            Math.floor(
-                (distance %
-                (1000 * 60 * 60 * 24)) /
-                (1000 * 60 * 60)
-            );
-
-
-        const mins =
-            Math.floor(
-                (distance %
-                (1000 * 60 * 60)) /
-                (1000 * 60)
-            );
-
-
-        const secs =
-            Math.floor(
-                (distance %
-                (1000 * 60)) /
-                1000
-            );
-
-
-        updateNumber(
-            "days",
-            days
+    const days =
+        Math.floor(
+            distance /
+            (1000 * 60 * 60 * 24)
         );
 
-        updateNumber(
-            "hours",
-            hours
+
+    const hours =
+        Math.floor(
+            (distance %
+            (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
         );
 
-        updateNumber(
-            "mins",
-            mins
+
+    const mins =
+        Math.floor(
+            (distance %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
         );
 
-        updateNumber(
-            "secs",
-            secs
+
+    const secs =
+        Math.floor(
+            (distance %
+            (1000 * 60)) /
+            1000
         );
 
-    }, 1000);
+
+    document.getElementById("days")
+        .innerText =
+        days.toString().padStart(2, "0");
 
 
-function updateNumber(
-    id,
-    number
-) {
+    document.getElementById("hours")
+        .innerText =
+        hours.toString().padStart(2, "0");
 
-    const element =
-        document.getElementById(id);
 
-    if (!element) return;
+    document.getElementById("mins")
+        .innerText =
+        mins.toString().padStart(2, "0");
 
-    element.innerHTML =
-        number < 10
-            ? "0" + number
-            : number;
+
+    document.getElementById("secs")
+        .innerText =
+        secs.toString().padStart(2, "0");
 }
 
 
-/* ================= MUSIC ================= */
+setInterval(updateCountdown, 1000);
+
+updateCountdown();
+
+
+
+/* ==========================================
+   MUSIC TOGGLE
+========================================== */
 
 function toggleMusic() {
 
@@ -174,18 +157,15 @@ function toggleMusic() {
 
     if (music.paused) {
 
-        music.play()
-            .then(() => {
+        music.play();
 
-                icon.classList.remove(
-                    "fa-music"
-                );
+        icon.classList.remove(
+            "fa-music"
+        );
 
-                icon.classList.add(
-                    "fa-volume-high"
-                );
-
-            });
+        icon.classList.add(
+            "fa-volume-high"
+        );
 
     } else {
 
@@ -198,139 +178,425 @@ function toggleMusic() {
         icon.classList.add(
             "fa-music"
         );
-
     }
-
 }
 
 
-/* ================= PHOTO SLIDER ================= */
+
+/* ==========================================
+   MAIN PHOTO SLIDER
+========================================== */
 
 let slideIndex = 0;
 
-let slideTimer;
+let sliderTimer;
+
+
+function getSlides() {
+
+    return document.querySelectorAll(
+        ".slide"
+    );
+}
 
 
 function showSlide(index) {
 
     const slides =
-        document.querySelectorAll(
-            ".slide"
-        );
-
+        getSlides();
 
     if (!slides.length) return;
 
 
     if (index >= slides.length) {
-
         slideIndex = 0;
-
     }
 
     if (index < 0) {
-
         slideIndex =
             slides.length - 1;
-
     }
 
 
     slides.forEach(
-        slide => {
-
+        slide =>
             slide.classList.remove(
                 "active"
-            );
-
-        }
+            )
     );
 
 
     slides[slideIndex]
-        .classList.add(
-            "active"
-        );
+        .classList.add("active");
 
+
+    updateSliderDots();
 }
 
 
 function changeSlide(direction) {
-
-    const slides =
-        document.querySelectorAll(
-            ".slide"
-        );
-
-
-    if (!slides.length) return;
-
 
     slideIndex += direction;
 
     showSlide(slideIndex);
 
     restartSlider();
-
-}
-
-
-function autoSlide() {
-
-    const slides =
-        document.querySelectorAll(
-            ".slide"
-        );
-
-
-    if (!slides.length) return;
-
-
-    slideIndex++;
-
-    if (
-        slideIndex >=
-        slides.length
-    ) {
-
-        slideIndex = 0;
-
-    }
-
-
-    showSlide(slideIndex);
-
 }
 
 
 function restartSlider() {
 
-    clearInterval(
-        slideTimer
-    );
+    clearInterval(sliderTimer);
 
-    slideTimer =
-        setInterval(
-            autoSlide,
-            3500
-        );
+    sliderTimer =
+        setInterval(() => {
 
+            slideIndex++;
+
+            showSlide(slideIndex);
+
+        }, 3500);
 }
 
 
+function createSliderDots() {
+
+    const dotsContainer =
+        document.getElementById(
+            "sliderDots"
+        );
+
+    const slides =
+        getSlides();
+
+    if (!dotsContainer) return;
+
+
+    dotsContainer.innerHTML = "";
+
+
+    slides.forEach(
+        (slide, index) => {
+
+            const dot =
+                document.createElement(
+                    "span"
+                );
+
+            dot.className =
+                "slider-dot";
+
+
+            dot.onclick = () => {
+
+                slideIndex = index;
+
+                showSlide(slideIndex);
+
+                restartSlider();
+
+            };
+
+
+            dotsContainer.appendChild(dot);
+
+        }
+    );
+
+
+    updateSliderDots();
+}
+
+
+function updateSliderDots() {
+
+    const dots =
+        document.querySelectorAll(
+            ".slider-dot"
+        );
+
+    dots.forEach(
+        dot =>
+            dot.classList.remove(
+                "active-dot"
+            )
+    );
+
+
+    if (dots[slideIndex]) {
+
+        dots[slideIndex]
+            .classList.add(
+                "active-dot"
+            );
+    }
+}
+
+
+
+/* ==========================================
+   PRE-WEDDING GALLERY
+========================================== */
+
+const galleryImages = [
+
+    "photo1.jpeg",
+
+    "photo2.jpeg",
+
+    "photo3.jpeg",
+
+    "photo4.jpeg",
+
+    "photo5.jpeg"
+
+];
+
+
+let galleryIndex = 0;
+
+
+function openPreWedding() {
+
+    const modal =
+        document.getElementById(
+            "preWeddingModal"
+        );
+
+
+    modal.classList.add("active");
+
+    galleryIndex = 0;
+
+    updateGallery();
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closePreWedding() {
+
+    const modal =
+        document.getElementById(
+            "preWeddingModal"
+        );
+
+
+    modal.classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+
+function updateGallery() {
+
+    const image =
+        document.getElementById(
+            "galleryMainImage"
+        );
+
+    const counter =
+        document.getElementById(
+            "galleryCounter"
+        );
+
+    const thumbnails =
+        document.querySelectorAll(
+            ".thumb"
+        );
+
+
+    image.style.opacity = "0";
+
+
+    setTimeout(() => {
+
+        image.src =
+            galleryImages[
+                galleryIndex
+            ];
+
+        image.style.opacity = "1";
+
+    }, 120);
+
+
+    counter.innerText =
+        `${galleryIndex + 1} / ${galleryImages.length}`;
+
+
+    thumbnails.forEach(
+        thumb =>
+            thumb.classList.remove(
+                "active-thumb"
+            )
+    );
+
+
+    if (thumbnails[galleryIndex]) {
+
+        thumbnails[galleryIndex]
+            .classList.add(
+                "active-thumb"
+            );
+    }
+}
+
+
+function changeGallery(direction) {
+
+    galleryIndex += direction;
+
+
+    if (
+        galleryIndex >=
+        galleryImages.length
+    ) {
+
+        galleryIndex = 0;
+    }
+
+
+    if (galleryIndex < 0) {
+
+        galleryIndex =
+            galleryImages.length - 1;
+    }
+
+
+    updateGallery();
+}
+
+
+function selectGallery(index) {
+
+    galleryIndex = index;
+
+    updateGallery();
+}
+
+
+
+/* ==========================================
+   CLOSE MODAL WHEN OUTSIDE CLICK
+========================================== */
+
 document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+    "click",
+    function(event) {
 
-        showSlide(0);
+        const modal =
+            document.getElementById(
+                "preWeddingModal"
+            );
 
-        restartSlider();
+
+        if (
+            modal &&
+            event.target === modal
+        ) {
+
+            closePreWedding();
+        }
 
     }
 );
 
 
-/* ================= WHATSAPP WISHES ================= */
+
+/* ==========================================
+   ESC KEY CLOSE
+========================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            closePreWedding();
+
+        }
+
+    }
+);
+
+
+
+/* ==========================================
+   SWIPE SUPPORT FOR PRE-WEDDING
+========================================== */
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+
+const galleryViewer =
+    document.querySelector(
+        ".gallery-viewer"
+    );
+
+
+if (galleryViewer) {
+
+    galleryViewer.addEventListener(
+        "touchstart",
+        function(event) {
+
+            touchStartX =
+                event.changedTouches[0]
+                .screenX;
+
+        },
+        { passive: true }
+    );
+
+
+    galleryViewer.addEventListener(
+        "touchend",
+        function(event) {
+
+            touchEndX =
+                event.changedTouches[0]
+                .screenX;
+
+
+            handleSwipe();
+
+        },
+        { passive: true }
+    );
+}
+
+
+function handleSwipe() {
+
+    const difference =
+        touchStartX - touchEndX;
+
+
+    if (Math.abs(difference) < 40) {
+        return;
+    }
+
+
+    if (difference > 0) {
+
+        changeGallery(1);
+
+    } else {
+
+        changeGallery(-1);
+
+    }
+}
+
+
+
+/* ==========================================
+   WHATSAPP WISHES
+========================================== */
 
 function sendToWhatsApp(event) {
 
@@ -359,49 +625,51 @@ function sendToWhatsApp(event) {
         "918084296708";
 
 
-    const text =
-        `Name: ${name}
-Phone: ${phone}
-Wish: ${message}`;
+    const whatsappMessage =
+
+        `💐 Wedding Blessings 💐
+
+Name: ${name}
+
+WhatsApp No.: ${phone}
+
+Wish:
+${message}
+
+Mansi ❤️ Dr. Nishu
+26th November 2026`;
 
 
     const whatsappUrl =
-        `https://wa.me/${targetNumber}?text=${encodeURIComponent(text)}`;
+        `https://wa.me/${targetNumber}?text=` +
+        encodeURIComponent(
+            whatsappMessage
+        );
 
 
     window.open(
         whatsappUrl,
         "_blank"
     );
-
 }
 
 
-/* ================= VIDEO ================= */
+
+/* ==========================================
+   PAGE LOAD
+========================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    function() {
 
-        const video =
-            document.getElementById(
-                "preWeddingVideo"
-            );
+        createSliderDots();
 
+        showSlide(0);
 
-        if (!video) return;
+        restartSlider();
 
-
-        video.addEventListener(
-            "error",
-            function () {
-
-                console.log(
-                    "Pre-wedding video not found."
-                );
-
-            }
-        );
+        updateGallery();
 
     }
 );
