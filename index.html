@@ -50,7 +50,7 @@
             </div>
 
             <p class="tap-hint">
-                ✨ A beautiful journey begins here ✨
+                Open our wedding invitation
             </p>
 
         </div>
@@ -63,36 +63,100 @@
         <source src="song.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="music-btn" onclick="toggleMusic(event)">
+    <button class="music-btn"
+            onclick="toggleMusic(event)"
+            aria-label="Toggle music">
+
         <i class="fa-solid fa-music" id="musicIcon"></i>
-    </div>
+
+    </button>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- ================= HERO / FIRST PAGE ================= -->
 
     <section class="hero-section">
 
-        <div class="hero-content">
+        <!-- Your wedding design image -->
+        <div class="hero-image-wrapper">
 
-            <div class="god-text">
-                ॥ Shri Ganeshaya Namah ॥
+            <img
+                src="hero.jpeg"
+                alt="Mansi and Dr. Nishu Wedding Invitation"
+                class="hero-image">
+
+        </div>
+
+
+        <!-- LIVE COUNTDOWN ON HERO -->
+
+        <div class="hero-countdown">
+
+            <div class="hero-countdown-title">
+                <span>THE WEDDING DAY</span>
             </div>
 
-            <p class="invite-tag">
-                You are invited to the wedding of
+            <p class="hero-date">
+                THURSDAY, 26TH NOVEMBER 2026
             </p>
 
-            <h1 class="couple-names">
-                Mansi
-                <span>Weds</span>
-                Dr. Nishu
-            </h1>
 
-            <div class="ornament">
-                ❖ ❖ ❖
+            <div class="countdown-grid">
+
+                <div class="time-box">
+                    <span id="days">00</span>
+                    <small>DAYS</small>
+                </div>
+
+                <div class="time-heart">♥</div>
+
+                <div class="time-box">
+                    <span id="hours">00</span>
+                    <small>HOURS</small>
+                </div>
+
+                <div class="time-heart">♥</div>
+
+                <div class="time-box">
+                    <span id="mins">00</span>
+                    <small>MINUTES</small>
+                </div>
+
+                <div class="time-heart">♥</div>
+
+                <div class="time-box">
+                    <span id="secs">00</span>
+                    <small>SECONDS</small>
+                </div>
+
             </div>
 
-            <div class="scroll-down">
+
+            <!-- Wedding day message -->
+
+            <div id="weddingDayMessage"
+                 class="wedding-day-message">
+
+                <div class="message-heart">
+                    ♥
+                </div>
+
+                <div class="arrived-text">
+                    THE DAY HAS ARRIVED
+                </div>
+
+                <h3>
+                    Happy Wedding Day!
+                </h3>
+
+                <p>
+                    Two Hearts, One Beautiful Beginning
+                </p>
+
+            </div>
+
+
+            <div class="hero-scroll">
+                <span>SCROLL TO EXPLORE</span>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
 
@@ -101,83 +165,13 @@
     </section>
 
 
-    <!-- ================= WEDDING DAY / COUNTDOWN ================= -->
-
-    <section class="wedding-day-section">
-
-        <div class="ornament">
-            ❖ ❖ ❖
-        </div>
-
-        <h2 class="main-title">
-            The Wedding Day
-        </h2>
-
-        <p class="date-sub">
-            THURSDAY, 26TH NOVEMBER 2026
-        </p>
-
-        <!-- COUNTDOWN WILL ALWAYS REMAIN VISIBLE -->
-
-        <div class="countdown-grid">
-
-            <div class="time-box">
-                <span id="days">00</span>
-                <small>Days</small>
-            </div>
-
-            <div class="time-box">
-                <span id="hours">00</span>
-                <small>Hours</small>
-            </div>
-
-            <div class="time-box">
-                <span id="mins">00</span>
-                <small>Minutes</small>
-            </div>
-
-            <div class="time-box">
-                <span id="secs">00</span>
-                <small>Seconds</small>
-            </div>
-
-        </div>
-
-
-        <!-- SPECIAL MESSAGE AFTER COUNTDOWN -->
-
-        <div id="weddingDayMessage" class="wedding-day-message">
-            <div class="message-heart">♥</div>
-
-            <h3>
-                The Wedding Day Has Arrived!
-            </h3>
-
-            <p>
-                Today is the beautiful beginning
-                of Mansi & Dr. Nishu's forever. ❤️
-            </p>
-
-            <div class="message-ornament">
-                ✦ ❖ ✦
-            </div>
-        </div>
-
-
-        <div class="ornament">
-            ❖ ❖ ❖
-        </div>
-
-        <h3 class="ceremony-title">
-            WEDDING CEREMONY
-        </h3>
-
-    </section>
-
-
     <!-- ================= EVENTS ================= -->
 
     <section class="events-section">
+
+        <div class="ornament">
+            ❖ ❖ ❖
+        </div>
 
         <h2 class="main-title">
             Wedding Events
@@ -188,13 +182,12 @@
         </p>
 
 
-        <!-- ================= HALDI ================= -->
+        <!-- HALDI -->
 
         <div class="event-card haldi-card">
 
             <div class="event-image-frame">
 
-                <!-- CHANGE THIS IMAGE TO YOUR HALDI PHOTO -->
                 <img
                     src="haldi.jpeg"
                     alt="Haldi Ceremony">
@@ -232,13 +225,12 @@
         </div>
 
 
-        <!-- ================= MEHENDI ================= -->
+        <!-- MEHENDI -->
 
         <div class="event-card mehendi-card">
 
             <div class="event-image-frame">
 
-                <!-- CHANGE THIS IMAGE TO YOUR MEHENDI PHOTO -->
                 <img
                     src="mehendi.jpeg"
                     alt="Mehendi Ceremony">
@@ -276,13 +268,12 @@
         </div>
 
 
-        <!-- ================= WEDDING CEREMONY ================= -->
+        <!-- WEDDING -->
 
         <div class="event-card wedding-card">
 
             <div class="event-image-frame">
 
-                <!-- CHANGE THIS IMAGE TO YOUR WEDDING PHOTO -->
                 <img
                     src="wedding-ceremony.jpeg"
                     alt="Wedding Ceremony">
@@ -324,7 +315,7 @@
 
     <!-- ================= FAMILY ================= -->
 
-    <section>
+    <section class="family-section">
 
         <h2 class="main-title">
             Family & Contacts
@@ -378,7 +369,7 @@
 
     <!-- ================= MEMORABLE TIMES ================= -->
 
-    <section>
+    <section class="memories-section">
 
         <h2 class="main-title">
             Our Memorable Times
@@ -389,8 +380,11 @@
             <button
                 class="slider-btn prev-btn"
                 onclick="changeSlide(-1)">
+
                 <i class="fa-solid fa-chevron-left"></i>
+
             </button>
+
 
             <img
                 class="slide active"
@@ -417,18 +411,24 @@
                 src="photo5.jpeg"
                 alt="Memory 5">
 
+
             <button
                 class="slider-btn next-btn"
                 onclick="changeSlide(1)">
+
                 <i class="fa-solid fa-chevron-right"></i>
+
             </button>
 
         </div>
 
-        <div class="slider-dots" id="sliderDots"></div>
+        <div
+            class="slider-dots"
+            id="sliderDots">
+        </div>
 
 
-        <!-- ================= LIVE WEDDING ================= -->
+        <!-- LIVE WEDDING -->
 
         <h2 class="main-title live-title">
 
@@ -481,8 +481,6 @@
                 </p>
 
 
-                <!-- YOUTUBE BUTTON -->
-
                 <a
                     href="https://www.youtube.com/"
                     target="_blank"
@@ -515,7 +513,7 @@
         </div>
 
 
-        <!-- ================= PRE-WEDDING ================= -->
+        <!-- PRE WEDDING -->
 
         <h2 class="main-title pre-title">
 
@@ -535,8 +533,11 @@
                     alt="Pre-wedding">
 
                 <div class="photo-count">
+
                     <i class="fa-solid fa-images"></i>
+
                     5 Memories
+
                 </div>
 
             </div>
@@ -585,7 +586,6 @@
                 <i class="fa-solid fa-xmark"></i>
 
             </button>
-
 
             <h2>
                 Pre-wedding Memories
@@ -669,7 +669,7 @@
 
     <!-- ================= WISHES ================= -->
 
-    <section>
+    <section class="wishes-section">
 
         <h2 class="main-title">
             Send us your Blessings
@@ -713,7 +713,7 @@
 
     <!-- ================= VENUE ================= -->
 
-    <section>
+    <section class="venue-section">
 
         <h2 class="main-title">
             Our Wedding Venue
@@ -754,7 +754,7 @@
     </section>
 
 
-    <!-- ================= SPECIAL REQUEST ================= -->
+    <!-- ================= FOOTER ================= -->
 
     <section class="footer-section">
 
