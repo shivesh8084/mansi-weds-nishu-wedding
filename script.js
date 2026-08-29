@@ -1,11 +1,12 @@
-/* ==========================================
-   WEDDING INVITATION JAVASCRIPT
-========================================== */
+/* =====================================================
+   MANSI & DR. NISHU WEDDING INVITATION
+   JAVASCRIPT
+===================================================== */
 
 
-/* ==========================================
-   OPEN INVITATION
-========================================== */
+/* =====================================================
+   TAP TO OPEN + MUSIC
+===================================================== */
 
 function openInvitation() {
 
@@ -17,6 +18,7 @@ function openInvitation() {
 
     const icon =
         document.getElementById("musicIcon");
+
 
     if (!overlay) return;
 
@@ -32,26 +34,33 @@ function openInvitation() {
                 if (icon) {
 
                     icon.classList.remove("fa-music");
-                    icon.classList.add("fa-volume-high");
+
+                    icon.classList.add(
+                        "fa-volume-high"
+                    );
 
                 }
 
             })
             .catch(() => {
 
-                console.log("Music requires user interaction.");
+                console.log(
+                    "Music requires user interaction."
+                );
 
             });
 
     }
 }
 
-window.openInvitation = openInvitation;
+
+window.openInvitation =
+    openInvitation;
 
 
-/* ==========================================
+/* =====================================================
    COUNTDOWN
-========================================== */
+===================================================== */
 
 const weddingDate =
     new Date(
@@ -81,7 +90,9 @@ function updateCountdown() {
         document.getElementById("secs");
 
     const weddingMessage =
-        document.getElementById("weddingDayMessage");
+        document.getElementById(
+            "weddingDayMessage"
+        );
 
 
     if (
@@ -90,35 +101,45 @@ function updateCountdown() {
         !minsElement ||
         !secsElement
     ) {
+
         return;
+
     }
 
 
-    /* ======================================
-       WEDDING DAY ARRIVED
-    ====================================== */
+    /* =============================================
+       WEDDING DAY
+    ============================================= */
 
     if (distance <= 0) {
 
         daysElement.innerText = "00";
+
         hoursElement.innerText = "00";
+
         minsElement.innerText = "00";
+
         secsElement.innerText = "00";
 
 
         if (weddingMessage) {
 
-            weddingMessage.classList.add("show");
+            weddingMessage.classList.add(
+                "show"
+            );
 
         }
 
         return;
+
     }
 
 
     if (weddingMessage) {
 
-        weddingMessage.classList.remove("show");
+        weddingMessage.classList.remove(
+            "show"
+        );
 
     }
 
@@ -132,24 +153,30 @@ function updateCountdown() {
 
     const hours =
         Math.floor(
-            (distance %
-                (1000 * 60 * 60 * 24)) /
+            (
+                distance %
+                (1000 * 60 * 60 * 24)
+            ) /
             (1000 * 60 * 60)
         );
 
 
     const mins =
         Math.floor(
-            (distance %
-                (1000 * 60 * 60)) /
+            (
+                distance %
+                (1000 * 60 * 60)
+            ) /
             (1000 * 60)
         );
 
 
     const secs =
         Math.floor(
-            (distance %
-                (1000 * 60)) /
+            (
+                distance %
+                (1000 * 60)
+            ) /
             1000
         );
 
@@ -157,11 +184,14 @@ function updateCountdown() {
     daysElement.innerText =
         days.toString().padStart(2, "0");
 
+
     hoursElement.innerText =
         hours.toString().padStart(2, "0");
 
+
     minsElement.innerText =
         mins.toString().padStart(2, "0");
+
 
     secsElement.innerText =
         secs.toString().padStart(2, "0");
@@ -174,14 +204,16 @@ setInterval(
 );
 
 
-/* ==========================================
-   MUSIC
-========================================== */
+/* =====================================================
+   MUSIC TOGGLE
+===================================================== */
 
 function toggleMusic(event) {
 
     if (event) {
+
         event.stopPropagation();
+
     }
 
 
@@ -200,40 +232,59 @@ function toggleMusic(event) {
         music.play()
             .then(() => {
 
-                icon.classList.remove("fa-music");
-                icon.classList.add("fa-volume-high");
+                icon.classList.remove(
+                    "fa-music"
+                );
+
+                icon.classList.add(
+                    "fa-volume-high"
+                );
 
             })
             .catch(() => {
 
-                console.log("Music play error.");
+                console.log(
+                    "Music play error."
+                );
 
             });
 
-    } else {
+    }
+
+    else {
 
         music.pause();
 
-        icon.classList.remove("fa-volume-high");
-        icon.classList.add("fa-music");
+        icon.classList.remove(
+            "fa-volume-high"
+        );
+
+        icon.classList.add(
+            "fa-music"
+        );
 
     }
 }
 
-window.toggleMusic = toggleMusic;
+
+window.toggleMusic =
+    toggleMusic;
 
 
-/* ==========================================
+/* =====================================================
    MAIN PHOTO SLIDER
-========================================== */
+===================================================== */
 
 let slideIndex = 0;
+
 let sliderTimer;
 
 
 function getSlides() {
 
-    return document.querySelectorAll(".slide");
+    return document.querySelectorAll(
+        ".slide"
+    );
 
 }
 
@@ -243,30 +294,44 @@ function showSlide(index) {
     const slides =
         getSlides();
 
+
     if (!slides.length) return;
 
 
     if (index >= slides.length) {
+
         slideIndex = 0;
+
     }
+
 
     if (index < 0) {
-        slideIndex = slides.length - 1;
+
+        slideIndex =
+            slides.length - 1;
+
     }
 
 
-    slides.forEach(slide => {
+    slides.forEach(
+        slide => {
 
-        slide.classList.remove("active");
+            slide.classList.remove(
+                "active"
+            );
 
-    });
+        }
+    );
 
 
     slides[slideIndex]
-        .classList.add("active");
+        .classList.add(
+            "active"
+        );
 
 
     updateSliderDots();
+
 }
 
 
@@ -277,31 +342,44 @@ function changeSlide(direction) {
     showSlide(slideIndex);
 
     restartSlider();
+
 }
 
 
 function restartSlider() {
 
-    clearInterval(sliderTimer);
+    clearInterval(
+        sliderTimer
+    );
+
 
     sliderTimer =
-        setInterval(() => {
+        setInterval(
+            () => {
 
-            slideIndex++;
+                slideIndex++;
 
-            showSlide(slideIndex);
+                showSlide(
+                    slideIndex
+                );
 
-        }, 3500);
+            },
+            3500
+        );
+
 }
 
 
 function createSliderDots() {
 
     const dotsContainer =
-        document.getElementById("sliderDots");
+        document.getElementById(
+            "sliderDots"
+        );
 
     const slides =
         getSlides();
+
 
     if (!dotsContainer) return;
 
@@ -309,61 +387,84 @@ function createSliderDots() {
     dotsContainer.innerHTML = "";
 
 
-    slides.forEach((slide, index) => {
+    slides.forEach(
+        (slide, index) => {
 
-        const dot =
-            document.createElement("span");
-
-        dot.className = "slider-dot";
-
-
-        dot.onclick = () => {
-
-            slideIndex = index;
-
-            showSlide(slideIndex);
-
-            restartSlider();
-
-        };
+            const dot =
+                document.createElement(
+                    "span"
+                );
 
 
-        dotsContainer.appendChild(dot);
+            dot.className =
+                "slider-dot";
 
-    });
+
+            dot.onclick = () => {
+
+                slideIndex =
+                    index;
+
+                showSlide(
+                    slideIndex
+                );
+
+                restartSlider();
+
+            };
+
+
+            dotsContainer.appendChild(
+                dot
+            );
+
+        }
+    );
 
 
     updateSliderDots();
+
 }
 
 
 function updateSliderDots() {
 
     const dots =
-        document.querySelectorAll(".slider-dot");
+        document.querySelectorAll(
+            ".slider-dot"
+        );
 
 
-    dots.forEach(dot => {
+    dots.forEach(
+        dot => {
 
-        dot.classList.remove("active-dot");
+            dot.classList.remove(
+                "active-dot"
+            );
 
-    });
+        }
+    );
 
 
     if (dots[slideIndex]) {
 
         dots[slideIndex]
-            .classList.add("active-dot");
+            .classList.add(
+                "active-dot"
+            );
 
     }
+
 }
 
-window.changeSlide = changeSlide;
+
+window.changeSlide =
+    changeSlide;
 
 
-/* ==========================================
+/* =====================================================
    PRE-WEDDING GALLERY
-========================================== */
+===================================================== */
 
 const galleryImages = [
 
@@ -382,80 +483,120 @@ let galleryIndex = 0;
 function openPreWedding() {
 
     const modal =
-        document.getElementById("preWeddingModal");
+        document.getElementById(
+            "preWeddingModal"
+        );
+
 
     if (!modal) return;
 
 
-    modal.classList.add("active");
+    modal.classList.add(
+        "active"
+    );
+
 
     galleryIndex = 0;
 
+
     updateGallery();
 
-    document.body.style.overflow = "hidden";
+
+    document.body.style.overflow =
+        "hidden";
+
 }
 
 
 function closePreWedding() {
 
     const modal =
-        document.getElementById("preWeddingModal");
+        document.getElementById(
+            "preWeddingModal"
+        );
+
 
     if (!modal) return;
 
 
-    modal.classList.remove("active");
+    modal.classList.remove(
+        "active"
+    );
 
-    document.body.style.overflow = "";
+
+    document.body.style.overflow =
+        "";
+
 }
 
 
 function updateGallery() {
 
     const image =
-        document.getElementById("galleryMainImage");
+        document.getElementById(
+            "galleryMainImage"
+        );
 
     const counter =
-        document.getElementById("galleryCounter");
+        document.getElementById(
+            "galleryCounter"
+        );
 
     const thumbnails =
-        document.querySelectorAll(".thumb");
+        document.querySelectorAll(
+            ".thumb"
+        );
 
 
     if (!image || !counter) return;
 
 
-    image.style.opacity = "0";
+    image.style.opacity =
+        "0";
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        image.src =
-            galleryImages[galleryIndex];
+            image.src =
+                galleryImages[
+                    galleryIndex
+                ];
 
-        image.style.opacity = "1";
+            image.style.opacity =
+                "1";
 
-    }, 120);
+        },
+        120
+    );
 
 
     counter.innerText =
         `${galleryIndex + 1} / ${galleryImages.length}`;
 
 
-    thumbnails.forEach(thumb => {
+    thumbnails.forEach(
+        thumb => {
 
-        thumb.classList.remove("active-thumb");
+            thumb.classList.remove(
+                "active-thumb"
+            );
 
-    });
+        }
+    );
 
 
-    if (thumbnails[galleryIndex]) {
+    if (
+        thumbnails[galleryIndex]
+    ) {
 
         thumbnails[galleryIndex]
-            .classList.add("active-thumb");
+            .classList.add(
+                "active-thumb"
+            );
 
     }
+
 }
 
 
@@ -483,6 +624,7 @@ function changeGallery(direction) {
 
 
     updateGallery();
+
 }
 
 
@@ -494,22 +636,32 @@ function selectGallery(index) {
 
 }
 
-window.openPreWedding = openPreWedding;
-window.closePreWedding = closePreWedding;
-window.changeGallery = changeGallery;
-window.selectGallery = selectGallery;
+
+window.openPreWedding =
+    openPreWedding;
+
+window.closePreWedding =
+    closePreWedding;
+
+window.changeGallery =
+    changeGallery;
+
+window.selectGallery =
+    selectGallery;
 
 
-/* ==========================================
-   MODAL OUTSIDE CLICK
-========================================== */
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
 
 document.addEventListener(
     "click",
     function(event) {
 
         const modal =
-            document.getElementById("preWeddingModal");
+            document.getElementById(
+                "preWeddingModal"
+            );
 
 
         if (
@@ -525,15 +677,13 @@ document.addEventListener(
 );
 
 
-/* ==========================================
-   ESC KEY
-========================================== */
-
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (event.key === "Escape") {
+        if (
+            event.key === "Escape"
+        ) {
 
             closePreWedding();
 
@@ -543,11 +693,12 @@ document.addEventListener(
 );
 
 
-/* ==========================================
+/* =====================================================
    GALLERY SWIPE
-========================================== */
+===================================================== */
 
 let touchStartX = 0;
+
 let touchEndX = 0;
 
 
@@ -556,7 +707,9 @@ document.addEventListener(
     function() {
 
         const galleryViewer =
-            document.querySelector(".gallery-viewer");
+            document.querySelector(
+                ".gallery-viewer"
+            );
 
 
         if (!galleryViewer) return;
@@ -567,10 +720,13 @@ document.addEventListener(
             function(event) {
 
                 touchStartX =
-                    event.changedTouches[0].screenX;
+                    event.changedTouches[0]
+                    .screenX;
 
             },
-            { passive: true }
+            {
+                passive: true
+            }
         );
 
 
@@ -579,12 +735,16 @@ document.addEventListener(
             function(event) {
 
                 touchEndX =
-                    event.changedTouches[0].screenX;
+                    event.changedTouches[0]
+                    .screenX;
+
 
                 handleSwipe();
 
             },
-            { passive: true }
+            {
+                passive: true
+            }
         );
 
     }
@@ -594,11 +754,16 @@ document.addEventListener(
 function handleSwipe() {
 
     const difference =
-        touchStartX - touchEndX;
+        touchStartX -
+        touchEndX;
 
 
-    if (Math.abs(difference) < 40) {
+    if (
+        Math.abs(difference) < 40
+    ) {
+
         return;
+
     }
 
 
@@ -606,17 +771,20 @@ function handleSwipe() {
 
         changeGallery(1);
 
-    } else {
+    }
+
+    else {
 
         changeGallery(-1);
 
     }
+
 }
 
 
-/* ==========================================
-   WHATSAPP
-========================================== */
+/* =====================================================
+   WHATSAPP WISHES
+===================================================== */
 
 function sendToWhatsApp(event) {
 
@@ -624,16 +792,24 @@ function sendToWhatsApp(event) {
 
 
     const name =
-        document.getElementById("wishName")
-            .value.trim();
+        document
+            .getElementById("wishName")
+            .value
+            .trim();
+
 
     const phone =
-        document.getElementById("wishPhone")
-            .value.trim();
+        document
+            .getElementById("wishPhone")
+            .value
+            .trim();
+
 
     const message =
-        document.getElementById("wishMessage")
-            .value.trim();
+        document
+            .getElementById("wishMessage")
+            .value
+            .trim();
 
 
     const targetNumber =
@@ -657,22 +833,26 @@ Mansi ❤️ Dr. Nishu
 
     const whatsappUrl =
         `https://wa.me/${targetNumber}?text=` +
-        encodeURIComponent(whatsappMessage);
+        encodeURIComponent(
+            whatsappMessage
+        );
 
 
     window.open(
         whatsappUrl,
         "_blank"
     );
+
 }
+
 
 window.sendToWhatsApp =
     sendToWhatsApp;
 
 
-/* ==========================================
+/* =====================================================
    PAGE LOAD
-========================================== */
+===================================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
