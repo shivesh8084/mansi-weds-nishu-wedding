@@ -19,6 +19,9 @@ function openInvitation() {
         document.getElementById("musicIcon");
 
 
+    if (!overlay) return;
+
+
     music.play()
         .then(() => {
 
@@ -37,24 +40,40 @@ function openInvitation() {
         });
 
 
-    overlay.style.opacity = "0";
-
-    setTimeout(() => {
-
-        overlay.style.display = "none";
-
-    }, 600);
+    overlay.classList.add("opened");
 }
 
+
+window.openInvitation = openInvitation;
 
 
 /* ==========================================
    COUNTDOWN
 ========================================== */
 
+/*
+   IMPORTANT:
+
+   Countdown 26 November 2026 ke START par
+   zero hoga.
+
+   Isliye target time:
+   November 26, 2026 00:00:00
+
+   Jaise hi 26 November start hoga:
+
+   00 Days
+   00 Hours
+   00 Minutes
+   00 Seconds
+
+   dikhega aur special wedding message
+   bhi show hoga.
+*/
+
 const weddingDate =
     new Date(
-        "November 26, 2026 19:00:00"
+        "November 26, 2026 00:00:00"
     ).getTime();
 
 
@@ -67,20 +86,72 @@ function updateCountdown() {
         weddingDate - now;
 
 
+    const daysElement =
+        document.getElementById("days");
+
+    const hoursElement =
+        document.getElementById("hours");
+
+    const minsElement =
+        document.getElementById("mins");
+
+    const secsElement =
+        document.getElementById("secs");
+
+    const weddingMessage =
+        document.getElementById("weddingDayMessage");
+
+
+    if (
+        !daysElement ||
+        !hoursElement ||
+        !minsElement ||
+        !secsElement
+    ) {
+        return;
+    }
+
+
+    /*
+       26 NOVEMBER START HO GAYA
+    */
+
     if (distance <= 0) {
 
-        document.querySelector(
-            ".countdown-grid"
-        ).innerHTML = `
-            <h3 style="
-                color:#ffd700;
-                font-family:'Cinzel',serif;
-            ">
-                The Wedding Day Has Arrived! ❤️
-            </h3>
-        `;
+        /*
+           Countdown boxes ko remove nahi karna.
+           Sirf 0000 karna hai.
+        */
+
+        daysElement.innerText = "00";
+        hoursElement.innerText = "00";
+        minsElement.innerText = "00";
+        secsElement.innerText = "00";
+
+
+        /*
+           Special wedding message show hoga.
+        */
+
+        if (weddingMessage) {
+
+            weddingMessage.classList.add("show");
+
+        }
+
 
         return;
+    }
+
+
+    /*
+       26 NOVEMBER SE PEHLE
+    */
+
+    if (weddingMessage) {
+
+        weddingMessage.classList.remove("show");
+
     }
 
 
@@ -115,38 +186,41 @@ function updateCountdown() {
         );
 
 
-    document.getElementById("days")
-        .innerText =
+    daysElement.innerText =
         days.toString().padStart(2, "0");
 
 
-    document.getElementById("hours")
-        .innerText =
+    hoursElement.innerText =
         hours.toString().padStart(2, "0");
 
 
-    document.getElementById("mins")
-        .innerText =
+    minsElement.innerText =
         mins.toString().padStart(2, "0");
 
 
-    document.getElementById("secs")
-        .innerText =
+    secsElement.innerText =
         secs.toString().padStart(2, "0");
 }
 
 
-setInterval(updateCountdown, 1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 
 updateCountdown();
-
 
 
 /* ==========================================
    MUSIC TOGGLE
 ========================================== */
 
-function toggleMusic() {
+function toggleMusic(event) {
+
+    if (event) {
+        event.stopPropagation();
+    }
+
 
     const music =
         document.getElementById("bgMusic");
@@ -155,17 +229,31 @@ function toggleMusic() {
         document.getElementById("musicIcon");
 
 
+    if (!music || !icon) return;
+
+
     if (music.paused) {
 
-        music.play();
+        music.play()
+            .then(() => {
 
-        icon.classList.remove(
-            "fa-music"
-        );
+                icon.classList.remove(
+                    "fa-music"
+                );
 
-        icon.classList.add(
-            "fa-volume-high"
-        );
+                icon.classList.add(
+                    "fa-volume-high"
+                );
+
+            })
+            .catch(error => {
+
+                console.log(
+                    "Music play error:",
+                    error
+                );
+
+            });
 
     } else {
 
@@ -181,6 +269,8 @@ function toggleMusic() {
     }
 }
 
+
+window.toggleMusic = toggleMusic;
 
 
 /* ==========================================
@@ -315,6 +405,7 @@ function updateSliderDots() {
             ".slider-dot"
         );
 
+
     dots.forEach(
         dot =>
             dot.classList.remove(
@@ -332,6 +423,8 @@ function updateSliderDots() {
     }
 }
 
+
+window.changeSlide = changeSlide;
 
 
 /* ==========================================
@@ -364,6 +457,9 @@ function openPreWedding() {
         );
 
 
+    if (!modal) return;
+
+
     modal.classList.add("active");
 
     galleryIndex = 0;
@@ -380,6 +476,9 @@ function closePreWedding() {
         document.getElementById(
             "preWeddingModal"
         );
+
+
+    if (!modal) return;
 
 
     modal.classList.remove("active");
@@ -404,6 +503,9 @@ function updateGallery() {
         document.querySelectorAll(
             ".thumb"
         );
+
+
+    if (!image || !counter) return;
 
 
     image.style.opacity = "0";
@@ -476,6 +578,11 @@ function selectGallery(index) {
 }
 
 
+window.openPreWedding = openPreWedding;
+window.closePreWedding = closePreWedding;
+window.changeGallery = changeGallery;
+window.selectGallery = selectGallery;
+
 
 /* ==========================================
    CLOSE MODAL WHEN OUTSIDE CLICK
@@ -503,7 +610,6 @@ document.addEventListener(
 );
 
 
-
 /* ==========================================
    ESC KEY CLOSE
 ========================================== */
@@ -520,7 +626,6 @@ document.addEventListener(
 
     }
 );
-
 
 
 /* ==========================================
@@ -593,7 +698,6 @@ function handleSwipe() {
 }
 
 
-
 /* ==========================================
    WHATSAPP WISHES
 ========================================== */
@@ -654,6 +758,8 @@ Mansi ❤️ Dr. Nishu
 }
 
 
+window.sendToWhatsApp = sendToWhatsApp;
+
 
 /* ==========================================
    PAGE LOAD
@@ -670,6 +776,8 @@ document.addEventListener(
         restartSlider();
 
         updateGallery();
+
+        updateCountdown();
 
     }
 );
