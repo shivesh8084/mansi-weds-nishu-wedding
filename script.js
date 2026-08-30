@@ -19,12 +19,13 @@ function openInvitation() {
         document.getElementById("musicIcon");
 
 
-    if (!overlay) return;
+    /* Overlay close */
 
+    if (overlay) {
 
-    /* Welcome screen close */
+        overlay.classList.add("opened");
 
-    overlay.classList.add("opened");
+    }
 
 
     /* Music start */
@@ -47,10 +48,11 @@ function openInvitation() {
                 }
 
             })
-            .catch(() => {
+            .catch((error) => {
 
                 console.log(
-                    "Music requires user interaction."
+                    "Music could not start:",
+                    error
                 );
 
             });
@@ -60,25 +62,30 @@ function openInvitation() {
 }
 
 
+/* HTML onclick ke liye */
+
 window.openInvitation =
     openInvitation;
 
 
 /* ==========================================
-   COUNTDOWN
+   COUNTDOWN DATE
 ========================================== */
 
 /*
-   Wedding:
+   Wedding Date:
    26 November 2026
-   00:00:00
 */
 
 const weddingDate =
     new Date(
-        "November 26, 2026 00:00:00"
+        "2026-11-26T00:00:00"
     ).getTime();
 
+
+/* ==========================================
+   UPDATE COUNTDOWN
+========================================== */
 
 function updateCountdown() {
 
@@ -108,9 +115,7 @@ function updateCountdown() {
         );
 
 
-    /*
-       Elements nahi mile
-    */
+    /* Elements nahi mile to function stop */
 
     if (
         !daysElement ||
@@ -130,16 +135,16 @@ function updateCountdown() {
 
     if (distance <= 0) {
 
-        daysElement.innerText =
+        daysElement.textContent =
             "00";
 
-        hoursElement.innerText =
+        hoursElement.textContent =
             "00";
 
-        minsElement.innerText =
+        minsElement.textContent =
             "00";
 
-        secsElement.innerText =
+        secsElement.textContent =
             "00";
 
 
@@ -157,9 +162,7 @@ function updateCountdown() {
     }
 
 
-    /* ======================================
-       BEFORE WEDDING
-    ====================================== */
+    /* Wedding day message hide */
 
     if (weddingMessage) {
 
@@ -169,6 +172,10 @@ function updateCountdown() {
 
     }
 
+
+    /* ======================================
+       CALCULATIONS
+    ====================================== */
 
     const days =
         Math.floor(
@@ -207,43 +214,39 @@ function updateCountdown() {
         );
 
 
-    daysElement.innerText =
-        days
-            .toString()
-            .padStart(2, "0");
+    /* ======================================
+       DISPLAY COUNTDOWN
+    ====================================== */
+
+    daysElement.textContent =
+        String(days).padStart(2, "0");
 
 
-    hoursElement.innerText =
-        hours
-            .toString()
-            .padStart(2, "0");
+    hoursElement.textContent =
+        String(hours).padStart(2, "0");
 
 
-    minsElement.innerText =
-        mins
-            .toString()
-            .padStart(2, "0");
+    minsElement.textContent =
+        String(mins).padStart(2, "0");
 
 
-    secsElement.innerText =
-        secs
-            .toString()
-            .padStart(2, "0");
+    secsElement.textContent =
+        String(secs).padStart(2, "0");
 
 }
-
-
-/* Every second */
-
-setInterval(
-    updateCountdown,
-    1000
-);
 
 
 /* First update immediately */
 
 updateCountdown();
+
+
+/* Update every second */
+
+setInterval(
+    updateCountdown,
+    1000
+);
 
 
 /* ==========================================
@@ -266,8 +269,14 @@ function toggleMusic(event) {
         document.getElementById("musicIcon");
 
 
-    if (!music || !icon) return;
+    if (!music || !icon) {
 
+        return;
+
+    }
+
+
+    /* Music paused hai */
 
     if (music.paused) {
 
@@ -283,17 +292,24 @@ function toggleMusic(event) {
                 );
 
             })
-            .catch(() => {
+            .catch((error) => {
 
                 console.log(
-                    "Music play error."
+                    "Music play error:",
+                    error
                 );
 
             });
 
-    } else {
+    }
+
+
+    /* Music chal raha hai */
+
+    else {
 
         music.pause();
+
 
         icon.classList.remove(
             "fa-volume-high"
@@ -307,6 +323,8 @@ function toggleMusic(event) {
 
 }
 
+
+/* HTML onclick ke liye */
 
 window.toggleMusic =
     toggleMusic;
