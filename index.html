@@ -1,834 +1,1067 @@
-\<!DOCTYPE html>
-\<html lang="en">
-\<head>
-    \<meta charset="UTF-8">
-    \<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
 
-    \<title>Mansi & Dr. Nishu - Wedding Invitation\</title>
+<head>
 
-    \<link href="[https://fonts.googleapis.com/css2?family=Cinzel\:wght@400;600;700&family=Marcellus&family=Poppins\:wght@300;400;500;600&display=swap](https://fonts.googleapis.com/css2?family=Cinzel\:wght@400;600;700\&family=Marcellus\&family=Poppins\:wght@300;400;500;600\&display=swap)" rel="stylesheet">
+    <meta charset="UTF-8">
 
-    \<link rel="stylesheet"
-          href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    \<link rel="stylesheet" href="style.css">
-\</head>
+    <title>Mansi & Dr. Nishu - Wedding Invitation</title>
 
-\<body>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Marcellus&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
-\<div class="phone-container">
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    \<!-- ================= WELCOME SCREEN ================= -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 
-    \<div id="welcomeOverlay"
-         class="welcome-overlay"
-         onclick="openInvitation()">
+</head>
 
-        \<div class="welcome-content">
 
-            \<div class="god-text">
+<body>
+
+
+<div class="phone-container">
+
+
+    <!-- =================================================
+         WELCOME / TAP TO OPEN SCREEN
+    ================================================== -->
+
+    <div
+        id="welcomeOverlay"
+        class="welcome-overlay"
+        onclick="openInvitation()">
+
+        <!-- Dark overlay -->
+        <div class="welcome-dark-overlay"></div>
+
+
+        <div class="welcome-content">
+
+
+            <!-- Ganesh Ji text -->
+
+            <div class="god-text">
                 ॥ Shri Ganeshaya Namah ॥
-            \</div>
+            </div>
 
-            \<h3 class="website-tag">
+
+            <h3 class="website-tag">
                 THE WEDDING WEBSITE
-            \</h3>
+            </h3>
 
-            \<h1 class="welcome-couple">
+
+            <h1 class="welcome-couple">
+
                 Mansi
-                \<span>Weds\</span>
+
+                <span>
+                    Weds
+                </span>
+
                 Dr. Nishu
-            \</h1>
 
-            \<div class="ornament">
+            </h1>
+
+
+            <div class="ornament">
                 ❖ ❖ ❖
-            \</div>
+            </div>
 
-            \<div class="tap-open-btn">
-                \<i class="fa-solid fa-heart">\</i>
+
+            <div class="tap-open-btn">
+
+                <i class="fa-solid fa-heart"></i>
+
                 TAP TO OPEN
-            \</div>
 
-            \<p class="tap-hint">
-                Tap anywhere to enter
-            \</p>
-
-        \</div>
-    \</div>
+            </div>
 
 
+            <p class="tap-hint">
+                Open our wedding invitation
+            </p>
 
-    \<!-- ================= MUSIC ================= -->
 
-    \<audio id="bgMusic" loop>
-        \<source src="song.mp3" type="audio/mpeg">
-    \</audio>
+        </div>
 
-    \<div class="music-btn" onclick="toggleMusic(event)">
-        \<i class="fa-solid fa-music" id="musicIcon">\</i>
-    \</div>
+    </div>
 
 
 
-    \<!-- ================= HERO ================= -->
+    <!-- =================================================
+         BACKGROUND MUSIC
+    ================================================== -->
 
-    \<section class="hero-section">
+    <audio id="bgMusic" loop>
 
-        \<div class="hero-content">
+        <source
+            src="song.mp3"
+            type="audio/mpeg">
 
-            \<div class="god-text">
-                ॥ Shri Ganeshaya Namah ॥
-            \</div>
+    </audio>
 
-            \<p class="invite-tag">
-                You are invited to the wedding of
-            \</p>
 
-            \<h1 class="couple-names">
-                Mansi
-                \<span>Weds\</span>
-                Dr. Nishu
-            \</h1>
+    <!-- MUSIC BUTTON -->
 
-            \<div class="ornament">
-                ❖ ❖ ❖
-            \</div>
+    <button
+        class="music-btn"
+        onclick="toggleMusic(event)"
+        aria-label="Toggle music">
 
-            \<div class="scroll-down">
-                \<i class="fa-solid fa-chevron-down">\</i>
-            \</div>
+        <i
+            class="fa-solid fa-music"
+            id="musicIcon">
+        </i>
 
-        \</div>
-
-    \</section>
+    </button>
 
 
 
-    \<!-- ================= WEDDING DAY / COUNTDOWN ================= -->
+    <!-- =================================================
+         HERO
+    ================================================== -->
 
-    \<section class="wedding-day-section">
+    <section class="hero-section">
 
-        \<div class="ornament">
+
+        <div class="hero-image-wrapper">
+
+            <img
+                src="hero.jpeg"
+                alt="Mansi and Dr. Nishu Wedding Invitation"
+                class="hero-image">
+
+        </div>
+
+
+
+        <!-- COUNTDOWN -->
+
+        <div class="hero-countdown">
+
+
+            <div class="hero-countdown-title">
+
+                <span>
+                    THE WEDDING DAY
+                </span>
+
+            </div>
+
+
+            <p class="hero-date">
+                THURSDAY, 26TH NOVEMBER 2026
+            </p>
+
+
+
+            <div class="countdown-grid">
+
+
+                <div class="time-box">
+
+                    <span id="days">
+                        00
+                    </span>
+
+                    <small>
+                        DAYS
+                    </small>
+
+                </div>
+
+
+                <div class="time-heart">
+                    ♥
+                </div>
+
+
+                <div class="time-box">
+
+                    <span id="hours">
+                        00
+                    </span>
+
+                    <small>
+                        HOURS
+                    </small>
+
+                </div>
+
+
+                <div class="time-heart">
+                    ♥
+                </div>
+
+
+                <div class="time-box">
+
+                    <span id="mins">
+                        00
+                    </span>
+
+                    <small>
+                        MINUTES
+                    </small>
+
+                </div>
+
+
+                <div class="time-heart">
+                    ♥
+                </div>
+
+
+                <div class="time-box">
+
+                    <span id="secs">
+                        00
+                    </span>
+
+                    <small>
+                        SECONDS
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- WEDDING DAY MESSAGE -->
+
+            <div
+                id="weddingDayMessage"
+                class="wedding-day-message">
+
+
+                <div class="message-heart">
+                    ♥
+                </div>
+
+
+                <div class="arrived-text">
+                    THE DAY HAS ARRIVED
+                </div>
+
+
+                <h3>
+                    Happy Wedding Day!
+                </h3>
+
+
+                <p>
+                    Two Hearts, One Beautiful Beginning
+                </p>
+
+
+            </div>
+
+
+
+            <div class="hero-scroll">
+
+                <span>
+                    SCROLL TO EXPLORE
+                </span>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         WEDDING EVENTS
+    ================================================== -->
+
+    <section class="events-section">
+
+
+        <div class="ornament">
             ❖ ❖ ❖
-        \</div>
-
-        \<h2 class="main-title">
-            The Wedding Day
-        \</h2>
-
-        \<p class="date-sub">
-            THURSDAY, 26TH NOVEMBER 2026
-        \</p>
-
-        \<!-- COUNTDOWN WILL ALWAYS REMAIN VISIBLE -->
-
-        \<div class="countdown-grid">
-
-            \<div class="time-box">
-                \<span id="days">00\</span>
-                \<small>Days\</small>
-            \</div>
-
-            \<div class="time-box">
-                \<span id="hours">00\</span>
-                \<small>Hours\</small>
-            \</div>
-
-            \<div class="time-box">
-                \<span id="mins">00\</span>
-                \<small>Minutes\</small>
-            \</div>
-
-            \<div class="time-box">
-                \<span id="secs">00\</span>
-                \<small>Seconds\</small>
-            \</div>
-
-        \</div>
+        </div>
 
 
-
-        \<!-- SPECIAL MESSAGE AFTER COUNTDOWN -->
-
-        \<div id="weddingDayMessage" class="wedding-day-message">
-            \<div class="message-heart">♥\</div>
-
-            \<h3>
-                The Wedding Day Has Arrived!
-            \</h3>
-
-            \<p>
-                Today is the beautiful beginning
-                of Mansi & Dr. Nishu's forever. ❤️
-            \</p>
-
-            \<div class="message-ornament">
-                ✦ ❖ ✦
-            \</div>
-        \</div>
-
-
-
-        \<div class="ornament">
-            ❖ ❖ ❖
-        \</div>
-
-        \<h3 class="ceremony-title">
-            WEDDING CEREMONY
-        \</h3>
-
-    \</section>
-
-
-
-    \<!-- ================= EVENTS ================= -->
-
-    \<section class="events-section">
-
-        \<h2 class="main-title">
+        <h2 class="main-title">
             Wedding Events
-        \</h2>
+        </h2>
 
-        \<p class="events-intro">
+
+        <p class="events-intro">
             Join us in celebrating these beautiful moments ❤️
-        \</p>
+        </p>
 
 
 
-        \<!-- ================= HALDI ================= -->
+        <!-- HALDI -->
 
-        \<div class="event-card haldi-card">
+        <div class="event-card haldi-card">
 
-            \<div class="event-image-frame">
 
-                \<!-- CHANGE THIS IMAGE TO YOUR HALDI PHOTO -->
-                \<img
+            <div class="event-image-frame">
+
+                <img
                     src="haldi.jpeg"
-                    alt="Haldi Ceremony">
+                    alt="Haldi Ceremony"
+                    onerror="this.style.display='none';">
 
-                \<div class="event-label">
+                <div class="event-label">
                     HALDI
-                \</div>
+                </div>
 
-            \</div>
+            </div>
 
-            \<div class="event-card-content">
 
-                \<div class="event-icon">
+            <div class="event-card-content">
+
+                <div class="event-icon">
                     🌼
-                \</div>
+                </div>
 
-                \<h3>
+
+                <h3>
                     Haldi Ceremony
-                \</h3>
+                </h3>
 
-                \<p class="event-date">
+
+                <p class="event-date">
                     Wednesday, 25th November 2026
-                \</p>
+                </p>
 
-                \<p class="event-time">
+
+                <p class="event-time">
                     08:00 PM Onwards
-                \</p>
+                </p>
 
-                \<p class="gold-text">
+
+                <p class="gold-text">
                     MY OWN RESIDENCE (SILKOR)
-                \</p>
+                </p>
 
-            \</div>
+            </div>
 
-        \</div>
+        </div>
 
 
 
-        \<!-- ================= MEHENDI ================= -->
+        <!-- MEHENDI -->
 
-        \<div class="event-card mehendi-card">
+        <div class="event-card mehendi-card">
 
-            \<div class="event-image-frame">
 
-                \<!-- CHANGE THIS IMAGE TO YOUR MEHENDI PHOTO -->
-                \<img
+            <div class="event-image-frame">
+
+                <img
                     src="mehendi.jpeg"
-                    alt="Mehendi Ceremony">
+                    alt="Mehendi Ceremony"
+                    onerror="this.style.display='none';">
 
-                \<div class="event-label">
+                <div class="event-label">
                     MEHENDI
-                \</div>
+                </div>
 
-            \</div>
+            </div>
 
-            \<div class="event-card-content">
 
-                \<div class="event-icon">
+            <div class="event-card-content">
+
+                <div class="event-icon">
                     🌿
-                \</div>
+                </div>
 
-                \<h3>
+
+                <h3>
                     Mehendi Ceremony
-                \</h3>
+                </h3>
 
-                \<p class="event-date">
+
+                <p class="event-date">
                     Wednesday, 25th November 2026
-                \</p>
+                </p>
 
-                \<p class="event-time">
+
+                <p class="event-time">
                     08:00 PM Onwards
-                \</p>
+                </p>
 
-                \<p class="gold-text">
+
+                <p class="gold-text">
                     MY OWN RESIDENCE (SILKOR)
-                \</p>
+                </p>
 
-            \</div>
+            </div>
 
-        \</div>
+        </div>
 
 
 
-        \<!-- ================= WEDDING CEREMONY ================= -->
+        <!-- WEDDING -->
 
-        \<div class="event-card wedding-card">
+        <div class="event-card wedding-card">
 
-            \<div class="event-image-frame">
 
-                \<!-- CHANGE THIS IMAGE TO YOUR WEDDING PHOTO -->
-                \<img
+            <div class="event-image-frame">
+
+                <img
                     src="wedding-ceremony.jpeg"
-                    alt="Wedding Ceremony">
+                    alt="Wedding Ceremony"
+                    onerror="this.style.display='none';">
 
-                \<div class="event-label">
+                <div class="event-label">
                     WEDDING
-                \</div>
+                </div>
 
-            \</div>
+            </div>
 
-            \<div class="event-card-content">
 
-                \<div class="event-icon">
+            <div class="event-card-content">
+
+                <div class="event-icon">
                     💍
-                \</div>
+                </div>
 
-                \<h3>
+
+                <h3>
                     Wedding Ceremony
-                \</h3>
+                </h3>
 
-                \<p class="event-date">
+
+                <p class="event-date">
                     Thursday, 26th November 2026
-                \</p>
+                </p>
 
-                \<p class="event-time">
+
+                <p class="event-time">
                     07:00 PM Onwards
-                \</p>
+                </p>
 
-                \<p class="gold-text">
+
+                <p class="gold-text">
                     MY OWN RESIDENCE (SILKOR)
-                \</p>
+                </p>
 
-            \</div>
+            </div>
 
-        \</div>
-
-    \</section>
+        </div>
 
 
+    </section>
 
-    \<!-- ================= FAMILY ================= -->
 
-    \<section>
 
-        \<h2 class="main-title">
+    <!-- =================================================
+         FAMILY
+    ================================================== -->
+
+    <section class="family-section">
+
+
+        <h2 class="main-title">
             Family & Contacts
-        \</h2>
+        </h2>
 
-        \<p class="family-subtitle">
+
+        <p class="family-subtitle">
             Aapke swagat ke liye hum taiyar hain
-        \</p>
+        </p>
 
 
 
-        \<div class="family-box">
+        <div class="family-box">
 
-            \<h3>
+            <h3>
                 Parents of Bride (Mansi)
-            \</h3>
+            </h3>
 
-            \<p class="family-name">
+
+            <p class="family-name">
+
                 Mr. Parmeshwar Prasad
-                \<br>
-                & Mrs. Neelam Devi
-            \</p>
 
-            \<a
+                <br>
+
+                & Mrs. Neelam Devi
+
+            </p>
+
+
+            <a
                 href="tel:+918084296708"
                 class="contact-btn">
 
-                \<i class="fa-solid fa-phone">\</i>
+                <i class="fa-solid fa-phone"></i>
+
                 Call Family
 
-            \</a>
+            </a>
 
-        \</div>
+        </div>
 
 
 
-        \<div class="family-box">
+        <div class="family-box">
 
-            \<h3>
+            <h3>
                 Parents of Groom (Dr. Nishu)
-            \</h3>
+            </h3>
 
-            \<p class="family-name">
+
+            <p class="family-name">
+
                 Mr. Hari Narayan Yadav
-                \<br>
+
+                <br>
+
                 & Mrs. Indila Devi
-            \</p>
 
-        \</div>
+            </p>
 
-    \</section>
-
+        </div>
 
 
-    \<!-- ================= MEMORABLE TIMES ================= -->
+    </section>
 
-    \<section>
 
-        \<h2 class="main-title">
+
+    <!-- =================================================
+         MEMORIES
+    ================================================== -->
+
+    <section class="memories-section">
+
+
+        <h2 class="main-title">
             Our Memorable Times
-        \</h2>
+        </h2>
 
-        \<div class="slider-container">
 
-            \<button
+        <div class="slider-container">
+
+
+            <button
                 class="slider-btn prev-btn"
                 onclick="changeSlide(-1)">
-                \<i class="fa-solid fa-chevron-left">\</i>
-            \</button>
 
-            \<img
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </button>
+
+
+            <img
                 class="slide active"
                 src="photo1.jpeg"
                 alt="Memory 1">
 
-            \<img
+
+            <img
                 class="slide"
                 src="photo2.jpeg"
                 alt="Memory 2">
 
-            \<img
+
+            <img
                 class="slide"
                 src="photo3.jpeg"
                 alt="Memory 3">
 
-            \<img
+
+            <img
                 class="slide"
                 src="photo4.jpeg"
                 alt="Memory 4">
 
-            \<img
+
+            <img
                 class="slide"
                 src="photo5.jpeg"
                 alt="Memory 5">
 
-            \<button
+
+            <button
                 class="slider-btn next-btn"
                 onclick="changeSlide(1)">
-                \<i class="fa-solid fa-chevron-right">\</i>
-            \</button>
 
-        \</div>
+                <i class="fa-solid fa-chevron-right"></i>
 
-        \<div class="slider-dots" id="sliderDots">\</div>
+            </button>
 
 
+        </div>
 
-        \<!-- ================= LIVE WEDDING ================= -->
 
-        \<h2 class="main-title live-title">
+        <div
+            class="slider-dots"
+            id="sliderDots">
+        </div>
 
-            \<span class="live-dot">\</span>
+
+
+        <!-- LIVE WEDDING -->
+
+        <h2 class="main-title live-title">
+
+            <span class="live-dot"></span>
 
             Watch Live Wedding
 
-        \</h2>
+        </h2>
 
 
 
-        \<div class="live-stream-container">
+        <div class="live-stream-container">
 
-            \<div class="live-video-wrapper">
 
-                \<img
+            <div class="live-video-wrapper">
+
+                <img
                     src="live%20banner.jpeg"
                     alt="Wedding Live Banner"
                     class="live-banner-img">
 
-                \<div class="live-overlay">
 
-                    \<div class="live-camera-icon">
-                        \<i class="fa-solid fa-video">\</i>
-                    \</div>
+                <div class="live-overlay">
 
-                    \<span>
+                    <div class="live-camera-icon">
+
+                        <i class="fa-solid fa-video"></i>
+
+                    </div>
+
+
+                    <span>
                         LIVE WEDDING
-                    \</span>
+                    </span>
 
-                \</div>
+                </div>
 
-            \</div>
+            </div>
 
 
 
-            \<div class="live-info-bar">
+            <div class="live-info-bar">
 
-                \<div class="status-badge">
 
-                    \<i class="fa-solid fa-circle">\</i>
+                <div class="status-badge">
+
+                    <i class="fa-solid fa-circle"></i>
 
                     Streaming Status:
-                    \<strong>Offline\</strong>
 
-                \</div>
+                    <strong>
+                        Offline
+                    </strong>
 
-                \<p class="live-subtext">
+                </div>
+
+
+                <p class="live-subtext">
+
                     Live broadcast will start on event day
-                    \<br>
+
+                    <br>
+
                     26th November 2026
-                \</p>
+
+                </p>
 
 
-
-                \<!-- YOUTUBE BUTTON -->
-
-                \<a
-                    href="[https://www.youtube.com/](https://www.youtube.com/)"
-                    target="\_blank"
+                <a
+                    href="https://www.youtube.com/"
+                    target="_blank"
                     rel="noopener noreferrer"
                     class="youtube-live-btn">
 
-                    \<i class="fa-brands fa-youtube">\</i>
+                    <i class="fa-brands fa-youtube"></i>
 
                     WATCH ON YOUTUBE
 
-                \</a>
+                </a>
 
 
+                <p class="youtube-hint">
 
-                \<p class="youtube-hint">
                     Tap the YouTube button to open the live wedding
-                \</p>
+
+                </p>
 
 
+                <div class="live-note">
 
-                \<div class="live-note">
-
-                    \<i class="fa-solid fa-heart">\</i>
+                    <i class="fa-solid fa-heart"></i>
 
                     Live wedding video will be available
                     here on the wedding day.
 
-                \</div>
-
-            \</div>
-
-        \</div>
+                </div>
 
 
+            </div>
 
-        \<!-- ================= PRE-WEDDING ================= -->
+        </div>
 
-        \<h2 class="main-title pre-title">
 
-            \<span>✦\</span>
+
+        <!-- PRE WEDDING -->
+
+        <h2 class="main-title pre-title">
+
+            <span>✦</span>
+
             Pre-wedding Highlights
-            \<span>✦\</span>
 
-        \</h2>
+            <span>✦</span>
+
+        </h2>
 
 
 
-        \<div class="prewedding-card">
+        <div class="prewedding-card">
 
-            \<div class="prewedding-photo">
 
-                \<img
+            <div class="prewedding-photo">
+
+                <img
                     src="photo1.jpeg"
                     alt="Pre-wedding">
 
-                \<div class="photo-count">
-                    \<i class="fa-solid fa-images">\</i>
+
+                <div class="photo-count">
+
+                    <i class="fa-solid fa-images"></i>
+
                     5 Memories
-                \</div>
 
-            \</div>
+                </div>
+
+            </div>
 
 
 
-            \<div class="prewedding-content">
+            <div class="prewedding-content">
 
-                \<h3>
+
+                <h3>
                     Our Pre-wedding Moments
-                \</h3>
+                </h3>
 
-                \<p>
+
+                <p>
+
                     Beautiful memories, special moments
                     and the journey before our wedding day.
-                \</p>
 
-                \<button
+                </p>
+
+
+                <button
                     class="view-memory-btn"
                     onclick="openPreWedding()">
 
-                    \<i class="fa-solid fa-images">\</i>
+                    <i class="fa-solid fa-images"></i>
 
                     View Memories
 
-                \</button>
-
-            \</div>
-
-        \</div>
-
-    \</section>
+                </button>
 
 
+            </div>
 
-    \<!-- ================= PRE-WEDDING POPUP ================= -->
+        </div>
 
-    \<div
+
+    </section>
+
+
+
+    <!-- =================================================
+         PRE-WEDDING MODAL
+    ================================================== -->
+
+    <div
         id="preWeddingModal"
         class="prewedding-modal">
 
-        \<div class="prewedding-modal-content">
 
-            \<button
+        <div class="prewedding-modal-content">
+
+
+            <button
                 class="close-prewedding"
                 onclick="closePreWedding()">
 
-                \<i class="fa-solid fa-xmark">\</i>
+                <i class="fa-solid fa-xmark"></i>
 
-            \</button>
+            </button>
 
 
-
-            \<h2>
+            <h2>
                 Pre-wedding Memories
-            \</h2>
+            </h2>
 
-            \<p class="gallery-subtitle">
+
+            <p class="gallery-subtitle">
                 Our beautiful moments ❤️
-            \</p>
+            </p>
 
 
 
-            \<div class="gallery-viewer">
+            <div class="gallery-viewer">
 
-                \<button
+
+                <button
                     class="gallery-arrow gallery-prev"
                     onclick="changeGallery(-1)">
 
-                    \<i class="fa-solid fa-chevron-left">\</i>
+                    <i class="fa-solid fa-chevron-left"></i>
 
-                \</button>
+                </button>
 
 
-
-                \<img
+                <img
                     id="galleryMainImage"
                     src="photo1.jpeg"
                     alt="Pre-wedding Memory">
 
 
-
-                \<button
+                <button
                     class="gallery-arrow gallery-next"
                     onclick="changeGallery(1)">
 
-                    \<i class="fa-solid fa-chevron-right">\</i>
+                    <i class="fa-solid fa-chevron-right"></i>
 
-                \</button>
-
-            \</div>
+                </button>
 
 
+            </div>
 
-            \<div
+
+
+            <div
                 class="gallery-counter"
                 id="galleryCounter">
 
                 1 / 5
 
-            \</div>
+            </div>
 
 
 
-            \<div class="gallery-thumbnails">
+            <div class="gallery-thumbnails">
 
-                \<img
+
+                <img
                     src="photo1.jpeg"
                     onclick="selectGallery(0)"
                     class="thumb active-thumb">
 
-                \<img
+
+                <img
                     src="photo2.jpeg"
                     onclick="selectGallery(1)"
                     class="thumb">
 
-                \<img
+
+                <img
                     src="photo3.jpeg"
                     onclick="selectGallery(2)"
                     class="thumb">
 
-                \<img
+
+                <img
                     src="photo4.jpeg"
                     onclick="selectGallery(3)"
                     class="thumb">
 
-                \<img
+
+                <img
                     src="photo5.jpeg"
                     onclick="selectGallery(4)"
                     class="thumb">
 
-            \</div>
 
-        \</div>
-
-    \</div>
+            </div>
 
 
+        </div>
 
-    \<!-- ================= WISHES ================= -->
+    </div>
 
-    \<section>
 
-        \<h2 class="main-title">
+
+    <!-- =================================================
+         WISHES
+    ================================================== -->
+
+    <section class="wishes-section">
+
+
+        <h2 class="main-title">
             Send us your Blessings
-        \</h2>
+        </h2>
 
-        \<form
+
+        <form
             class="wish-form"
             id="wishForm"
             onsubmit="sendToWhatsApp(event)">
 
-            \<input
+
+            <input
                 type="text"
                 id="wishName"
                 placeholder="Your Name"
                 required>
 
-            \<input
+
+            <input
                 type="tel"
                 id="wishPhone"
                 placeholder="Your WhatsApp No."
                 required>
 
-            \<textarea
+
+            <textarea
                 id="wishMessage"
                 rows="3"
                 placeholder="Your Wishes..."
-                required>\</textarea>
+                required></textarea>
 
-            \<button type="submit">
 
-                \<i class="fa-brands fa-whatsapp">\</i>
+            <button type="submit">
+
+                <i class="fa-brands fa-whatsapp"></i>
 
                 Send Blessings
 
-            \</button>
-
-        \</form>
-
-    \</section>
+            </button>
 
 
+        </form>
 
-    \<!-- ================= VENUE ================= -->
 
-    \<section>
+    </section>
 
-        \<h2 class="main-title">
+
+
+    <!-- =================================================
+         VENUE
+    ================================================== -->
+
+    <section class="venue-section">
+
+
+        <h2 class="main-title">
             Our Wedding Venue
-        \</h2>
+        </h2>
 
-        \<p class="venue-name">
+
+        <p class="venue-name">
             MY OWN RESIDENCE (SILKOR)
-        \</p>
+        </p>
 
 
+        <div class="map-box">
 
-        \<div class="map-box">
 
-            \<iframe
+            <iframe
                 width="100%"
                 height="100%"
                 frameborder="0"
                 scrolling="no"
                 marginheight="0"
                 marginwidth="0"
-                src="[https://maps.google.com/maps?q=Silkor&t=&z=15&ie=UTF8&iwloc=&output=embed](https://maps.google.com/maps?q=Silkor\&t=\&z=15\&ie=UTF8\&iwloc=\&output=embed)">
-            \</iframe>
-
-        \</div>
+                src="https://maps.google.com/maps?q=Silkor&t=&z=15&ie=UTF8&iwloc=&output=embed">
+            </iframe>
 
 
+        </div>
 
-        \<a
-            href="[https://maps.app.goo.gl/Ukub4pu6ngf5fhpC8](https://maps.app.goo.gl/Ukub4pu6ngf5fhpC8)"
-            target="\_blank"
+
+        <a
+            href="https://maps.app.goo.gl/Ukub4pu6ngf5fhpC8"
+            target="_blank"
             rel="noopener noreferrer"
             class="directions-btn">
 
-            \<i class="fa-solid fa-location-dot">\</i>
+            <i class="fa-solid fa-location-dot"></i>
 
             GET DIRECTIONS
 
-        \</a>
-
-    \</section>
+        </a>
 
 
+    </section>
 
-    \<!-- ================= SPECIAL REQUEST ================= -->
 
-    \<section class="footer-section">
 
-        \<h2 class="main-title">
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <section class="footer-section">
+
+
+        <h2 class="main-title">
             Special Request
-        \</h2>
+        </h2>
 
 
+        <div class="alert-box">
 
-        \<div class="alert-box">
 
-            \<i class="fa-solid fa-triangle-exclamation">\</i>
+            <i class="fa-solid fa-triangle-exclamation"></i>
 
-            \<strong>Instructions:\</strong>
+            <strong>
+                Instructions:
+            </strong>
+
 
             Do not wander alone, especially after
             10:00 PM.
 
-            \<br>\<br>
+
+            <br>
+            <br>
+
 
             "O Stree Kal Aana" cupboards will be
             respectfully removed for one night.
 
-        \</div>
+
+        </div>
 
 
 
-        \<div class="ornament">
+        <div class="ornament">
             ❖ ❖ ❖
-        \</div>
+        </div>
 
 
 
-        \<p class="cordly">
+        <p class="cordly">
             CORDLY INVITED BY
-        \</p>
+        </p>
 
 
 
-        \<h3 class="invitee-footer">
+        <h3 class="invitee-footer">
 
             Rameshwar Yadav,
             Sunil,
@@ -839,28 +1072,33 @@
             Harsh,
             Pary
 
-            \<br>
+            <br>
 
             & Yadav Parivar (Silkor)
 
-        \</h3>
+        </h3>
 
 
 
-        \<p class="footer-note">
+        <p class="footer-note">
 
             Your presence will make our day
             even more memorable. ❤️
 
-        \</p>
-
-    \</section>
-
-\</div>
+        </p>
 
 
+    </section>
 
-\<script src="script.js">\</script>
 
-\</body>
-\</html>
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
