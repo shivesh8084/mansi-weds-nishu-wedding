@@ -8,21 +8,30 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
     font-family: "Poppins", sans-serif;
     background: #180006;
-    color: #fff;
+    color: #ffffff;
     overflow-x: hidden;
 }
+
+
+/* ==========================================
+   MAIN CONTAINER
+========================================== */
 
 .phone-container {
     width: 100%;
     max-width: 600px;
-    margin: auto;
+    min-height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
 
     background:
         radial-gradient(
@@ -31,9 +40,6 @@ body {
             #260006 45%,
             #120003 100%
         );
-
-    min-height: 100vh;
-    overflow: hidden;
 }
 
 
@@ -52,59 +58,53 @@ body {
     justify-content: center;
 
     overflow: hidden;
-
     cursor: pointer;
 
     background: #240006;
 
     transition:
-        opacity 1s ease,
-        visibility 1s ease,
-        transform 1s ease;
+        opacity 0.8s ease,
+        visibility 0.8s ease,
+        transform 0.8s ease;
 }
 
 
-/*
-   Ganesh Ji background
-*/
+/* ==========================================
+   GANESH JI BACKGROUND
+========================================== */
 
 .welcome-overlay-bg {
-
     position: absolute;
-
     inset: 0;
 
     background-image:
         linear-gradient(
-            rgba(50, 0, 7, .55),
-            rgba(20, 0, 3, .78)
+            rgba(50, 0, 7, 0.48),
+            rgba(20, 0, 3, 0.80)
         ),
         url("ganesh.jpeg");
 
     background-size: cover;
-
     background-position: center;
-
     background-repeat: no-repeat;
 
     z-index: 0;
+
+    transform: scale(1.02);
 }
 
 
-/*
-   Golden border
-*/
+/* ==========================================
+   GOLDEN BORDER
+========================================== */
 
-.welcome-overlay::after {
-
+.welcome-overlay::before {
     content: "";
 
     position: absolute;
-
     inset: 18px;
 
-    border: 1px solid
-        rgba(230, 180, 70, .65);
+    border: 1px solid rgba(230, 180, 70, 0.65);
 
     pointer-events: none;
 
@@ -112,13 +112,14 @@ body {
 }
 
 
+/* ==========================================
+   OPENED STATE
+========================================== */
+
 .welcome-overlay.opened {
-
     opacity: 0;
-
     visibility: hidden;
-
-    transform: scale(1.06);
+    transform: scale(1.05);
 
     pointer-events: none;
 }
@@ -129,171 +130,165 @@ body {
 ========================================== */
 
 .welcome-content {
-
     position: relative;
-
     z-index: 2;
 
-    text-align: center;
-
-    padding: 30px;
-
+    width: 100%;
     max-width: 500px;
+
+    padding: 30px 25px;
+
+    text-align: center;
 }
 
 
 .god-text {
-
     font-family: "Cinzel", serif;
 
     color: #f2c75c;
 
     font-size: 15px;
-
     letter-spacing: 2px;
 
     margin-bottom: 28px;
 
     text-shadow:
-        0 2px 10px rgba(0,0,0,.7);
+        0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 
 .website-tag {
-
     font-family: "Marcellus", serif;
 
-    color: #fff;
+    color: #ffffff;
 
     font-size: 12px;
-
     letter-spacing: 4px;
 
-    font-weight: 400;
-
     margin-bottom: 25px;
+
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 
 .welcome-couple {
-
     font-family: "Cinzel", serif;
 
     color: #eabd55;
 
     font-size: 42px;
+    font-weight: 600;
 
     line-height: 1.25;
 
     text-shadow:
-        0 2px 15px
-        rgba(0,0,0,.7);
+        0 2px 15px rgba(0, 0, 0, 0.7);
 }
 
 
 .welcome-couple span {
-
     display: block;
 
-    color: #fff;
+    margin: 5px 0;
+
+    color: #ffffff;
 
     font-family: cursive;
 
     font-size: 25px;
-
-    margin: 5px 0;
+    font-weight: 400;
 }
 
 
 .ornament {
+    margin: 20px 0;
 
     color: #d9a93f;
 
     letter-spacing: 8px;
 
-    margin: 20px 0;
+    font-size: 16px;
 }
 
 
-.tap-open-btn {
+/* ==========================================
+   TAP TO OPEN BUTTON
+========================================== */
 
+.tap-open-btn {
     display: inline-flex;
 
     align-items: center;
+    justify-content: center;
 
     gap: 10px;
 
     padding: 14px 30px;
 
     border: 1px solid #d9a93f;
-
     border-radius: 30px;
 
     color: #f3c65b;
 
     background:
-        rgba(30,0,4,.35);
+        rgba(30, 0, 4, 0.40);
 
     font-size: 13px;
-
     letter-spacing: 2px;
 
-    animation:
-        pulseButton 2s infinite;
+    animation: pulseButton 2s infinite;
 }
 
 
 .tap-hint {
-
     margin-top: 18px;
 
-    color:
-        rgba(255,255,255,.75);
+    color: rgba(255, 255, 255, 0.78);
 
     font-size: 12px;
+
+    letter-spacing: 0.5px;
 }
 
 
 @keyframes pulseButton {
 
-    0%, 100% {
-
+    0%,
+    100% {
         box-shadow:
-            0 0 0
-            rgba(226,177,65,0);
+            0 0 0 rgba(226, 177, 65, 0);
     }
 
     50% {
-
         box-shadow:
-            0 0 25px
-            rgba(226,177,65,.45);
+            0 0 25px rgba(226, 177, 65, 0.45);
     }
+
 }
 
 
 /* ==========================================
-   MUSIC
+   MUSIC BUTTON
 ========================================== */
 
 .music-btn {
-
     position: fixed;
 
     right: 18px;
-
     bottom: 20px;
 
     width: 52px;
-
     height: 52px;
 
-    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border: 2px solid #e7bb50;
+    border-radius: 50%;
 
     background: #f5cc67;
-
     color: #3b080b;
 
     z-index: 1000;
@@ -303,7 +298,7 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 5px 25px rgba(0,0,0,.4);
+        0 5px 25px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -312,7 +307,6 @@ body {
 ========================================== */
 
 .hero-section {
-
     position: relative;
 
     width: 100%;
@@ -324,7 +318,6 @@ body {
 
 
 .hero-design {
-
     position: relative;
 
     width: 100%;
@@ -334,38 +327,35 @@ body {
 
 
 .hero-image {
-
     display: block;
 
     width: 100%;
-
     height: auto;
+
+    max-width: 100%;
 }
 
 
 /* ==========================================
-   ONE LIVE COUNTDOWN
+   ONLY ONE LIVE COUNTDOWN
 ========================================== */
 
 .live-countdown {
-
     position: absolute;
 
     left: 8%;
-
     right: 8%;
 
     /*
-       Ye position image ke existing
-       00 countdown ke upar hai.
+       Countdown ki position.
+       Agar image me upar/neeche karna ho
+       to sirf is top value ko change karein.
     */
-
     top: 75.2%;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     gap: 5px;
@@ -377,11 +367,9 @@ body {
 
 
 .live-time-box {
-
     flex: 1;
 
     min-width: 0;
-
     height: 70px;
 
     display: flex;
@@ -389,60 +377,52 @@ body {
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
-    background: transparent;
-
-    border: none;
-
     line-height: 1;
+
+    background: transparent;
 }
 
 
 .live-time-box span {
-
     display: block;
+
+    color: #f5c846;
 
     font-family: "Cinzel", serif;
 
     font-size: 29px;
-
     font-weight: 600;
-
-    color: #f5c846;
 
     line-height: 1;
 
     text-shadow:
-        0 2px 7px
-        rgba(0,0,0,.75);
+        0 2px 7px rgba(0, 0, 0, 0.75);
 }
 
 
 .live-time-box small {
-
     display: block;
 
     margin-top: 7px;
 
-    color: #fff;
+    color: #ffffff;
 
     font-family: "Cinzel", serif;
 
     font-size: 9px;
-
-    letter-spacing: .5px;
+    letter-spacing: 0.5px;
 
     line-height: 1;
 
     text-shadow:
-        0 1px 5px
-        rgba(0,0,0,.8);
+        0 1px 5px rgba(0, 0, 0, 0.8);
 }
 
 
 .live-time-heart {
+    flex: 0 0 auto;
 
     color: #f2c34e;
 
@@ -451,8 +431,7 @@ body {
     line-height: 1;
 
     text-shadow:
-        0 2px 7px
-        rgba(0,0,0,.7);
+        0 2px 7px rgba(0, 0, 0, 0.7);
 }
 
 
@@ -461,47 +440,42 @@ body {
 ========================================== */
 
 .wedding-day-message {
-
     position: absolute;
 
     left: 10%;
-
     right: 10%;
 
     top: 83%;
 
-    padding: 10px;
-
-    text-align: center;
-
     display: none;
 
+    padding: 10px;
+
     z-index: 6;
+
+    text-align: center;
 
     line-height: normal;
 
     background:
-        rgba(35,3,7,.72);
+        rgba(35, 3, 7, 0.72);
 
     border:
-        1px solid
-        rgba(214,165,56,.7);
+        1px solid rgba(214, 165, 56, 0.7);
 
     border-radius: 10px;
 }
 
 
 .wedding-day-message.show {
-
     display: block;
 
     animation:
-        weddingMessage .8s ease;
+        weddingMessage 0.8s ease;
 }
 
 
 .message-heart {
-
     color: #f2c34e;
 
     font-size: 22px;
@@ -509,39 +483,34 @@ body {
 
 
 .arrived-text {
+    margin-top: 3px;
+
+    color: #ffffff;
 
     font-family: "Cinzel", serif;
 
     font-size: 13px;
-
-    color: #fff;
-
     letter-spacing: 2px;
-
-    margin-top: 3px;
 }
 
 
 .wedding-day-message h3 {
+    margin: 5px 0;
+
+    color: #efbd46;
 
     font-family: cursive;
 
     font-size: 27px;
-
-    color: #efbd46;
-
-    margin: 5px 0;
 }
 
 
 .wedding-day-message p {
-
     color: #f0d178;
 
     font-family: "Cinzel", serif;
 
     font-size: 10px;
-
     letter-spacing: 1px;
 }
 
@@ -549,7 +518,6 @@ body {
 @keyframes weddingMessage {
 
     from {
-
         opacity: 0;
 
         transform:
@@ -557,25 +525,23 @@ body {
     }
 
     to {
-
         opacity: 1;
 
         transform:
             translateY(0);
     }
+
 }
 
 
 /* ==========================================
-   SCROLL
+   SCROLL TO EXPLORE
 ========================================== */
 
 .hero-scroll {
-
     position: absolute;
 
     left: 50%;
-
     bottom: 2%;
 
     transform:
@@ -590,8 +556,9 @@ body {
     color: #e2b244;
 
     font-size: 8px;
-
     letter-spacing: 2px;
+
+    white-space: nowrap;
 
     z-index: 10;
 
@@ -600,7 +567,6 @@ body {
 
 
 .hero-scroll i {
-
     margin-top: 7px;
 
     font-size: 18px;
@@ -612,17 +578,17 @@ body {
 
 @keyframes arrowDown {
 
-    0%, 100% {
-
+    0%,
+    100% {
         transform:
             translateY(0);
     }
 
     50% {
-
         transform:
             translateY(7px);
     }
+
 }
 
 
@@ -632,22 +598,42 @@ body {
 
 @media (max-width: 480px) {
 
-    .welcome-couple {
+    .welcome-overlay::before {
+        inset: 12px;
+    }
 
+
+    .welcome-content {
+        padding: 25px 20px;
+    }
+
+
+    .welcome-couple {
         font-size: 36px;
     }
 
 
-    .god-text {
+    .welcome-couple span {
+        font-size: 23px;
+    }
 
+
+    .god-text {
         font-size: 13px;
+
+        margin-bottom: 24px;
+    }
+
+
+    .website-tag {
+        font-size: 10px;
+
+        letter-spacing: 3px;
     }
 
 
     .live-countdown {
-
         left: 8%;
-
         right: 8%;
 
         top: 75.2%;
@@ -657,35 +643,29 @@ body {
 
 
     .live-time-box {
-
         height: 55px;
     }
 
 
     .live-time-box span {
-
         font-size: 22px;
     }
 
 
     .live-time-box small {
+        margin-top: 6px;
 
         font-size: 7px;
-
-        margin-top: 6px;
     }
 
 
     .live-time-heart {
-
         font-size: 10px;
     }
 
 
     .wedding-day-message {
-
         left: 9%;
-
         right: 9%;
 
         top: 83%;
@@ -693,25 +673,22 @@ body {
 
 
     .wedding-day-message h3 {
-
         font-size: 22px;
     }
 
 
     .arrived-text {
-
         font-size: 10px;
     }
 
 
     .wedding-day-message p {
-
         font-size: 8px;
     }
 
 
     .hero-scroll {
-
         font-size: 7px;
     }
+
 }
