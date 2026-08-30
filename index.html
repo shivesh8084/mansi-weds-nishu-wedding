@@ -1,20 +1,24 @@
 <!-- ================= WELCOME SCREEN ================= -->
 
-<div id="welcomeOverlay"
-     class="welcome-overlay"
-     onclick="openInvitation()">
+<div
+    id="welcomeOverlay"
+    class="welcome-overlay"
+    onclick="openInvitation()"
+>
 
+    <!-- Ganesh Ji Background -->
     <div class="welcome-overlay-bg"></div>
 
+    <!-- Welcome Content -->
     <div class="welcome-content">
 
         <div class="god-text">
-            ॥ Shri Ganeshaya Namah ॥
+            ॥ श्री गणेशाय नमः ॥
         </div>
 
-        <h3 class="website-tag">
+        <div class="website-tag">
             THE WEDDING WEBSITE
-        </h3>
+        </div>
 
         <h1 class="welcome-couple">
             Mansi
@@ -28,7 +32,7 @@
 
         <div class="tap-open-btn">
             <i class="fa-solid fa-heart"></i>
-            TAP TO OPEN
+            <span>TAP TO OPEN</span>
         </div>
 
         <p class="tap-hint">
@@ -40,17 +44,26 @@
 </div>
 
 
-<!-- ================= MUSIC ================= -->
+<!-- ================= BACKGROUND MUSIC ================= -->
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop preload="auto">
     <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn"
-        onclick="toggleMusic(event)"
-        aria-label="Toggle music">
 
-    <i class="fa-solid fa-music" id="musicIcon"></i>
+<!-- ================= MUSIC BUTTON ================= -->
+
+<button
+    type="button"
+    class="music-btn"
+    onclick="toggleMusic(event)"
+    aria-label="Toggle music"
+>
+
+    <i
+        class="fa-solid fa-music"
+        id="musicIcon"
+    ></i>
 
 </button>
 
@@ -61,17 +74,15 @@
 
     <div class="hero-design">
 
-        <!-- आपकी पूरी wedding design image -->
+        <!-- Main Wedding Hero Image -->
         <img
             src="hero.jpeg"
             alt="Mansi and Dr. Nishu Wedding Invitation"
-            class="hero-image">
+            class="hero-image"
+        >
 
 
-        <!-- =================================
-             ONLY ONE LIVE COUNTDOWN
-             यही image के 00 वाले स्थान पर रहेगा
-        ================================== -->
+        <!-- ================= LIVE COUNTDOWN ================= -->
 
         <div class="live-countdown">
 
@@ -82,6 +93,7 @@
 
             <div class="live-time-heart">♥</div>
 
+
             <div class="live-time-box">
                 <span id="hours">00</span>
                 <small>HOURS</small>
@@ -89,12 +101,14 @@
 
             <div class="live-time-heart">♥</div>
 
+
             <div class="live-time-box">
                 <span id="mins">00</span>
                 <small>MINUTES</small>
             </div>
 
             <div class="live-time-heart">♥</div>
+
 
             <div class="live-time-box">
                 <span id="secs">00</span>
@@ -104,12 +118,12 @@
         </div>
 
 
-        <!-- =================================
-             WEDDING DAY MESSAGE
-        ================================== -->
+        <!-- ================= WEDDING DAY MESSAGE ================= -->
 
-        <div id="weddingDayMessage"
-             class="wedding-day-message">
+        <div
+            id="weddingDayMessage"
+            class="wedding-day-message"
+        >
 
             <div class="message-heart">
                 ♥
@@ -130,7 +144,7 @@
         </div>
 
 
-        <!-- SCROLL -->
+        <!-- ================= SCROLL ================= -->
 
         <div class="hero-scroll">
 
