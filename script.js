@@ -1,12 +1,11 @@
-/* =====================================================
-   MANSI & DR. NISHU WEDDING INVITATION
-   JAVASCRIPT
-===================================================== */
+/* ==========================================
+   WEDDING INVITATION JAVASCRIPT
+========================================== */
 
 
-/* =====================================================
-   TAP TO OPEN + MUSIC
-===================================================== */
+/* ==========================================
+   OPEN INVITATION + MUSIC
+========================================== */
 
 function openInvitation() {
 
@@ -23,44 +22,54 @@ function openInvitation() {
     if (!overlay) return;
 
 
+    music.play()
+        .then(() => {
+
+            icon.classList.remove("fa-music");
+
+            icon.classList.add("fa-volume-high");
+
+        })
+        .catch(error => {
+
+            console.log(
+                "Music autoplay error:",
+                error
+            );
+
+        });
+
+
     overlay.classList.add("opened");
-
-
-    if (music) {
-
-        music.play()
-            .then(() => {
-
-                if (icon) {
-
-                    icon.classList.remove("fa-music");
-
-                    icon.classList.add(
-                        "fa-volume-high"
-                    );
-
-                }
-
-            })
-            .catch(() => {
-
-                console.log(
-                    "Music requires user interaction."
-                );
-
-            });
-
-    }
 }
 
 
-window.openInvitation =
-    openInvitation;
+window.openInvitation = openInvitation;
 
 
-/* =====================================================
+/* ==========================================
    COUNTDOWN
-===================================================== */
+========================================== */
+
+/*
+   IMPORTANT:
+
+   Countdown 26 November 2026 ke START par
+   zero hoga.
+
+   Isliye target time:
+   November 26, 2026 00:00:00
+
+   Jaise hi 26 November start hoga:
+
+   00 Days
+   00 Hours
+   00 Minutes
+   00 Seconds
+
+   dikhega aur special wedding message
+   bhi show hoga.
+*/
 
 const weddingDate =
     new Date(
@@ -90,9 +99,7 @@ function updateCountdown() {
         document.getElementById("secs");
 
     const weddingMessage =
-        document.getElementById(
-            "weddingDayMessage"
-        );
+        document.getElementById("weddingDayMessage");
 
 
     if (
@@ -101,45 +108,49 @@ function updateCountdown() {
         !minsElement ||
         !secsElement
     ) {
-
         return;
-
     }
 
 
-    /* =============================================
-       WEDDING DAY
-    ============================================= */
+    /*
+       26 NOVEMBER START HO GAYA
+    */
 
     if (distance <= 0) {
 
+        /*
+           Countdown boxes ko remove nahi karna.
+           Sirf 0000 karna hai.
+        */
+
         daysElement.innerText = "00";
-
         hoursElement.innerText = "00";
-
         minsElement.innerText = "00";
-
         secsElement.innerText = "00";
 
 
+        /*
+           Special wedding message show hoga.
+        */
+
         if (weddingMessage) {
 
-            weddingMessage.classList.add(
-                "show"
-            );
+            weddingMessage.classList.add("show");
 
         }
 
-        return;
 
+        return;
     }
 
 
+    /*
+       26 NOVEMBER SE PEHLE
+    */
+
     if (weddingMessage) {
 
-        weddingMessage.classList.remove(
-            "show"
-        );
+        weddingMessage.classList.remove("show");
 
     }
 
@@ -153,30 +164,24 @@ function updateCountdown() {
 
     const hours =
         Math.floor(
-            (
-                distance %
-                (1000 * 60 * 60 * 24)
-            ) /
+            (distance %
+            (1000 * 60 * 60 * 24)) /
             (1000 * 60 * 60)
         );
 
 
     const mins =
         Math.floor(
-            (
-                distance %
-                (1000 * 60 * 60)
-            ) /
+            (distance %
+            (1000 * 60 * 60)) /
             (1000 * 60)
         );
 
 
     const secs =
         Math.floor(
-            (
-                distance %
-                (1000 * 60)
-            ) /
+            (distance %
+            (1000 * 60)) /
             1000
         );
 
@@ -203,17 +208,17 @@ setInterval(
     1000
 );
 
+updateCountdown();
 
-/* =====================================================
+
+/* ==========================================
    MUSIC TOGGLE
-===================================================== */
+========================================== */
 
 function toggleMusic(event) {
 
     if (event) {
-
         event.stopPropagation();
-
     }
 
 
@@ -241,17 +246,16 @@ function toggleMusic(event) {
                 );
 
             })
-            .catch(() => {
+            .catch(error => {
 
                 console.log(
-                    "Music play error."
+                    "Music play error:",
+                    error
                 );
 
             });
 
-    }
-
-    else {
+    } else {
 
         music.pause();
 
@@ -262,18 +266,16 @@ function toggleMusic(event) {
         icon.classList.add(
             "fa-music"
         );
-
     }
 }
 
 
-window.toggleMusic =
-    toggleMusic;
+window.toggleMusic = toggleMusic;
 
 
-/* =====================================================
+/* ==========================================
    MAIN PHOTO SLIDER
-===================================================== */
+========================================== */
 
 let slideIndex = 0;
 
@@ -285,7 +287,6 @@ function getSlides() {
     return document.querySelectorAll(
         ".slide"
     );
-
 }
 
 
@@ -294,44 +295,32 @@ function showSlide(index) {
     const slides =
         getSlides();
 
-
     if (!slides.length) return;
 
 
     if (index >= slides.length) {
-
         slideIndex = 0;
-
     }
 
-
     if (index < 0) {
-
         slideIndex =
             slides.length - 1;
-
     }
 
 
     slides.forEach(
-        slide => {
-
+        slide =>
             slide.classList.remove(
                 "active"
-            );
-
-        }
+            )
     );
 
 
     slides[slideIndex]
-        .classList.add(
-            "active"
-        );
+        .classList.add("active");
 
 
     updateSliderDots();
-
 }
 
 
@@ -342,31 +331,21 @@ function changeSlide(direction) {
     showSlide(slideIndex);
 
     restartSlider();
-
 }
 
 
 function restartSlider() {
 
-    clearInterval(
-        sliderTimer
-    );
-
+    clearInterval(sliderTimer);
 
     sliderTimer =
-        setInterval(
-            () => {
+        setInterval(() => {
 
-                slideIndex++;
+            slideIndex++;
 
-                showSlide(
-                    slideIndex
-                );
+            showSlide(slideIndex);
 
-            },
-            3500
-        );
-
+        }, 3500);
 }
 
 
@@ -379,7 +358,6 @@ function createSliderDots() {
 
     const slides =
         getSlides();
-
 
     if (!dotsContainer) return;
 
@@ -395,35 +373,28 @@ function createSliderDots() {
                     "span"
                 );
 
-
             dot.className =
                 "slider-dot";
 
 
             dot.onclick = () => {
 
-                slideIndex =
-                    index;
+                slideIndex = index;
 
-                showSlide(
-                    slideIndex
-                );
+                showSlide(slideIndex);
 
                 restartSlider();
 
             };
 
 
-            dotsContainer.appendChild(
-                dot
-            );
+            dotsContainer.appendChild(dot);
 
         }
     );
 
 
     updateSliderDots();
-
 }
 
 
@@ -436,13 +407,10 @@ function updateSliderDots() {
 
 
     dots.forEach(
-        dot => {
-
+        dot =>
             dot.classList.remove(
                 "active-dot"
-            );
-
-        }
+            )
     );
 
 
@@ -452,26 +420,27 @@ function updateSliderDots() {
             .classList.add(
                 "active-dot"
             );
-
     }
-
 }
 
 
-window.changeSlide =
-    changeSlide;
+window.changeSlide = changeSlide;
 
 
-/* =====================================================
+/* ==========================================
    PRE-WEDDING GALLERY
-===================================================== */
+========================================== */
 
 const galleryImages = [
 
     "photo1.jpeg",
+
     "photo2.jpeg",
+
     "photo3.jpeg",
+
     "photo4.jpeg",
+
     "photo5.jpeg"
 
 ];
@@ -491,20 +460,13 @@ function openPreWedding() {
     if (!modal) return;
 
 
-    modal.classList.add(
-        "active"
-    );
-
+    modal.classList.add("active");
 
     galleryIndex = 0;
 
-
     updateGallery();
 
-
-    document.body.style.overflow =
-        "hidden";
-
+    document.body.style.overflow = "hidden";
 }
 
 
@@ -519,14 +481,9 @@ function closePreWedding() {
     if (!modal) return;
 
 
-    modal.classList.remove(
-        "active"
-    );
+    modal.classList.remove("active");
 
-
-    document.body.style.overflow =
-        "";
-
+    document.body.style.overflow = "";
 }
 
 
@@ -551,24 +508,19 @@ function updateGallery() {
     if (!image || !counter) return;
 
 
-    image.style.opacity =
-        "0";
+    image.style.opacity = "0";
 
 
-    setTimeout(
-        () => {
+    setTimeout(() => {
 
-            image.src =
-                galleryImages[
-                    galleryIndex
-                ];
+        image.src =
+            galleryImages[
+                galleryIndex
+            ];
 
-            image.style.opacity =
-                "1";
+        image.style.opacity = "1";
 
-        },
-        120
-    );
+    }, 120);
 
 
     counter.innerText =
@@ -576,27 +528,20 @@ function updateGallery() {
 
 
     thumbnails.forEach(
-        thumb => {
-
+        thumb =>
             thumb.classList.remove(
                 "active-thumb"
-            );
-
-        }
+            )
     );
 
 
-    if (
-        thumbnails[galleryIndex]
-    ) {
+    if (thumbnails[galleryIndex]) {
 
         thumbnails[galleryIndex]
             .classList.add(
                 "active-thumb"
             );
-
     }
-
 }
 
 
@@ -611,7 +556,6 @@ function changeGallery(direction) {
     ) {
 
         galleryIndex = 0;
-
     }
 
 
@@ -619,12 +563,10 @@ function changeGallery(direction) {
 
         galleryIndex =
             galleryImages.length - 1;
-
     }
 
 
     updateGallery();
-
 }
 
 
@@ -633,26 +575,18 @@ function selectGallery(index) {
     galleryIndex = index;
 
     updateGallery();
-
 }
 
 
-window.openPreWedding =
-    openPreWedding;
-
-window.closePreWedding =
-    closePreWedding;
-
-window.changeGallery =
-    changeGallery;
-
-window.selectGallery =
-    selectGallery;
+window.openPreWedding = openPreWedding;
+window.closePreWedding = closePreWedding;
+window.changeGallery = changeGallery;
+window.selectGallery = selectGallery;
 
 
-/* =====================================================
-   CLOSE MODAL
-===================================================== */
+/* ==========================================
+   CLOSE MODAL WHEN OUTSIDE CLICK
+========================================== */
 
 document.addEventListener(
     "click",
@@ -670,20 +604,21 @@ document.addEventListener(
         ) {
 
             closePreWedding();
-
         }
 
     }
 );
 
 
+/* ==========================================
+   ESC KEY CLOSE
+========================================== */
+
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (
-            event.key === "Escape"
-        ) {
+        if (event.key === "Escape") {
 
             closePreWedding();
 
@@ -693,77 +628,61 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   GALLERY SWIPE
-===================================================== */
+/* ==========================================
+   SWIPE SUPPORT FOR PRE-WEDDING
+========================================== */
 
 let touchStartX = 0;
 
 let touchEndX = 0;
 
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        const galleryViewer =
-            document.querySelector(
-                ".gallery-viewer"
-            );
+const galleryViewer =
+    document.querySelector(
+        ".gallery-viewer"
+    );
 
 
-        if (!galleryViewer) return;
+if (galleryViewer) {
+
+    galleryViewer.addEventListener(
+        "touchstart",
+        function(event) {
+
+            touchStartX =
+                event.changedTouches[0]
+                .screenX;
+
+        },
+        { passive: true }
+    );
 
 
-        galleryViewer.addEventListener(
-            "touchstart",
-            function(event) {
+    galleryViewer.addEventListener(
+        "touchend",
+        function(event) {
 
-                touchStartX =
-                    event.changedTouches[0]
-                    .screenX;
-
-            },
-            {
-                passive: true
-            }
-        );
+            touchEndX =
+                event.changedTouches[0]
+                .screenX;
 
 
-        galleryViewer.addEventListener(
-            "touchend",
-            function(event) {
+            handleSwipe();
 
-                touchEndX =
-                    event.changedTouches[0]
-                    .screenX;
-
-
-                handleSwipe();
-
-            },
-            {
-                passive: true
-            }
-        );
-
-    }
-);
+        },
+        { passive: true }
+    );
+}
 
 
 function handleSwipe() {
 
     const difference =
-        touchStartX -
-        touchEndX;
+        touchStartX - touchEndX;
 
 
-    if (
-        Math.abs(difference) < 40
-    ) {
-
+    if (Math.abs(difference) < 40) {
         return;
-
     }
 
 
@@ -771,20 +690,17 @@ function handleSwipe() {
 
         changeGallery(1);
 
-    }
-
-    else {
+    } else {
 
         changeGallery(-1);
 
     }
-
 }
 
 
-/* =====================================================
+/* ==========================================
    WHATSAPP WISHES
-===================================================== */
+========================================== */
 
 function sendToWhatsApp(event) {
 
@@ -792,24 +708,21 @@ function sendToWhatsApp(event) {
 
 
     const name =
-        document
-            .getElementById("wishName")
-            .value
-            .trim();
+        document.getElementById(
+            "wishName"
+        ).value.trim();
 
 
     const phone =
-        document
-            .getElementById("wishPhone")
-            .value
-            .trim();
+        document.getElementById(
+            "wishPhone"
+        ).value.trim();
 
 
     const message =
-        document
-            .getElementById("wishMessage")
-            .value
-            .trim();
+        document.getElementById(
+            "wishMessage"
+        ).value.trim();
 
 
     const targetNumber =
@@ -818,7 +731,7 @@ function sendToWhatsApp(event) {
 
     const whatsappMessage =
 
-`💐 Wedding Blessings 💐
+        `💐 Wedding Blessings 💐
 
 Name: ${name}
 
@@ -842,17 +755,15 @@ Mansi ❤️ Dr. Nishu
         whatsappUrl,
         "_blank"
     );
-
 }
 
 
-window.sendToWhatsApp =
-    sendToWhatsApp;
+window.sendToWhatsApp = sendToWhatsApp;
 
 
-/* =====================================================
+/* ==========================================
    PAGE LOAD
-===================================================== */
+========================================== */
 
 document.addEventListener(
     "DOMContentLoaded",
