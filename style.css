@@ -1,256 +1,318 @@
-/* ==========================================
-   NEW PREMIUM CIRCLE COUNTDOWN
-========================================== */
+/* =========================================================
+   MANSI WEDS DR. NISHU
+   PREMIUM WEDDING COUNTDOWN
+   ========================================================= */
 
 .hero-countdown {
     position: relative;
+
+    width: calc(100% - 28px);
+
     margin: 0 14px;
-    padding: 28px 10px 32px;
+
+    padding: 25px 8px 28px;
+
+    box-sizing: border-box;
 
     text-align: center;
 
     background:
         radial-gradient(
             circle at center,
-            #4a0b10 0%,
-            #280408 48%,
-            #160204 100%
+            #5b1019 0%,
+            #39070d 45%,
+            #1c0307 100%
         );
 
-    border: 1px solid #c99b35;
+    border: 1px solid #c99b38;
 
     box-shadow:
-        0 0 25px rgba(0,0,0,.45),
-        inset 0 0 30px rgba(210,160,45,.10);
+        0 0 25px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(211, 165, 59, 0.10);
 
     overflow: hidden;
 }
 
 
-/* GOLD DECORATIVE TOP LINE */
+/* GOLD INNER FRAME */
 
 .hero-countdown::before {
-    content: "✦ ───────── ❖ ───────── ✦";
+    content: "";
 
-    display: block;
+    position: absolute;
 
-    color: #e5b84d;
+    top: 7px;
+    left: 7px;
+    right: 7px;
+    bottom: 7px;
 
-    font-family: "Cinzel", serif;
+    border: 1px solid rgba(210, 166, 65, 0.28);
 
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 13px;
-
-    opacity: .9;
+    pointer-events: none;
 }
 
 
-/* TITLE */
+/* =========================================================
+   DECORATIONS
+   ========================================================= */
 
-.hero-countdown-title {
+.countdown-decoration {
+    position: relative;
+
+    z-index: 2;
+
+    color: #e0b64d;
+
     font-family: "Cinzel", serif;
 
-    font-size: 20px;
-
-    letter-spacing: 2px;
-
-    color: #fff;
-
-    margin-bottom: 8px;
-
-    text-shadow:
-        0 2px 8px rgba(0,0,0,.8);
-}
-
-
-.hero-countdown-title::before,
-.hero-countdown-title::after {
-    content: "❖";
-
-    color: #e4b642;
-
-    margin: 0 9px;
-
-    font-size: 11px;
-}
-
-
-/* DATE */
-
-.hero-date {
-    font-family: "Cinzel", serif;
-
-    color: #edc454;
-
-    font-size: 12px;
+    font-size: 9px;
 
     letter-spacing: 1px;
 
-    margin-bottom: 24px;
-
-    text-shadow:
-        0 2px 5px rgba(0,0,0,.8);
+    white-space: nowrap;
 }
 
 
-/* ==========================================
-   COUNTDOWN CIRCLES
-========================================== */
+.top-decoration {
+    margin-bottom: 12px;
+}
+
+
+.bottom-decoration {
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.hero-countdown-title {
+    position: relative;
+
+    z-index: 2;
+
+    font-family: "Marcellus", serif;
+
+    font-size: 20px;
+
+    font-weight: 400;
+
+    letter-spacing: 2px;
+
+    color: #ffffff;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.2);
+
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.hero-date {
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0 0 22px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    color: #e6bb4c;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   COUNTDOWN GRID
+   ========================================================= */
 
 .countdown-grid {
-    display: flex;
+    position: relative;
 
-    justify-content: center;
+    z-index: 2;
+
+    display: flex;
 
     align-items: center;
 
-    gap: 5px;
+    justify-content: center;
 
     width: 100%;
+
+    gap: 4px;
+
+    box-sizing: border-box;
 }
 
 
-/* CIRCLE BOX */
+/* =========================================================
+   ROUND COUNTDOWN CIRCLE
+   ========================================================= */
 
 .time-box {
     position: relative;
 
-    width: 72px;
+    width: 64px;
 
-    height: 72px;
+    height: 64px;
 
-    flex: 0 0 72px;
+    min-width: 64px;
+
+    flex: 0 0 64px;
 
     display: flex;
 
     flex-direction: column;
 
-    justify-content: center;
-
     align-items: center;
 
+    justify-content: center;
+
+    box-sizing: border-box;
+
     border-radius: 50%;
+
+    border: 1.5px solid #d8aa3e;
 
     background:
         radial-gradient(
             circle,
-            #4b0b10 0%,
-            #280407 65%,
-            #170204 100%
+            #551019 0%,
+            #35070d 65%,
+            #210307 100%
         );
 
-    border: 2px solid #d5a83d;
-
     box-shadow:
-        0 0 0 4px #260407,
-        0 0 0 5px #a97d25,
-        0 5px 18px rgba(0,0,0,.5);
-
-    transition: .3s ease;
+        0 0 12px rgba(218, 171, 65, 0.16),
+        inset 0 0 14px rgba(218, 171, 65, 0.12);
 }
 
 
-/* INNER GOLD RING */
+/* INNER CIRCLE */
 
 .time-box::before {
     content: "";
 
     position: absolute;
 
-    inset: 5px;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
 
     border-radius: 50%;
 
-    border: 1px solid rgba(237,194,77,.55);
+    border: 1px solid rgba(231, 191, 82, 0.45);
 
     pointer-events: none;
 }
 
 
-/* SMALL DECORATIVE DOT */
+/* TOP STAR */
 
 .time-box::after {
     content: "✦";
 
     position: absolute;
 
-    top: 1px;
+    top: -8px;
 
     left: 50%;
 
     transform: translateX(-50%);
 
-    color: #f0c650;
+    color: #e4b94e;
 
-    font-size: 8px;
+    background: #32060c;
 
-    background: #260407;
+    padding: 0 4px;
 
-    padding: 0 3px;
+    font-size: 10px;
+
+    line-height: 14px;
 }
 
 
-/* NUMBER */
+/* =========================================================
+   NUMBER
+   ========================================================= */
 
-.time-box span {
+.time-number {
     position: relative;
 
-    z-index: 2;
-
-    display: block;
+    z-index: 3;
 
     font-family: "Cinzel", serif;
 
-    font-size: 25px;
+    font-size: 20px;
 
-    font-weight: 600;
+    font-weight: 700;
 
     line-height: 1;
 
-    color: #f4c84e;
+    color: #f4ca58;
 
     text-shadow:
-        0 2px 5px rgba(0,0,0,.7);
+        0 0 7px rgba(244, 202, 88, 0.35);
 }
 
 
-/* LABEL */
+/* =========================================================
+   LABEL
+   ========================================================= */
 
-.time-box small {
+.time-label {
     position: relative;
 
-    z-index: 2;
-
-    display: block;
+    z-index: 3;
 
     margin-top: 6px;
 
-    color: #fff;
+    font-family: "Poppins", sans-serif;
 
-    font-family: "Marcellus", serif;
+    font-size: 6px;
 
-    font-size: 7px;
+    font-weight: 500;
 
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
+
+    color: #ffffff;
+
+    line-height: 1;
+
+    text-transform: uppercase;
 }
 
 
-/* HEART BETWEEN CIRCLES */
+/* =========================================================
+   HEARTS
+   ========================================================= */
 
 .time-heart {
-    width: 15px;
+    flex: 0 0 auto;
 
-    flex: 0 0 15px;
+    color: #e4b848;
 
-    color: #edbd43;
+    font-size: 13px;
 
-    font-size: 14px;
+    line-height: 1;
 
     text-shadow:
-        0 0 8px rgba(236,188,62,.45);
+        0 0 8px rgba(228, 184, 72, 0.4);
 
     animation: countdownHeart 1.5s ease-in-out infinite;
 }
@@ -258,43 +320,97 @@
 
 @keyframes countdownHeart {
 
-    0%, 100% {
+    0%,
+    100% {
         transform: scale(1);
+
+        opacity: 0.75;
     }
 
     50% {
         transform: scale(1.25);
+
+        opacity: 1;
     }
-
 }
 
 
-/* BOTTOM DECORATION */
+/* =========================================================
+   WEDDING DAY MESSAGE
+   ========================================================= */
 
-.hero-countdown::after {
-    content: "✦ ───────── ♥ ───────── ✦";
+.wedding-day-message {
+    display: none;
 
-    display: block;
+    position: relative;
 
-    color: #dcae3d;
+    z-index: 2;
 
-    font-size: 10px;
+    margin: 20px 8px 0;
 
-    letter-spacing: 2px;
+    padding: 15px 8px;
 
-    margin-top: 22px;
+    border-top: 1px solid rgba(216, 170, 62, 0.5);
 
-    opacity: .9;
+    border-bottom: 1px solid rgba(216, 170, 62, 0.5);
+
+    text-align: center;
 }
 
 
-/* ==========================================
+.message-heart {
+    color: #e4b848;
+
+    font-size: 21px;
+
+    margin-bottom: 4px;
+}
+
+
+.arrived-text {
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+
+    color: #e7bd4e;
+}
+
+
+.wedding-day-message h3 {
+    margin: 7px 0 4px;
+
+    font-family: "Marcellus", serif;
+
+    font-size: 18px;
+
+    font-weight: 400;
+
+    color: #ffffff;
+}
+
+
+.wedding-day-message p {
+    margin: 0;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 9px;
+
+    color: #d9c49d;
+}
+
+
+/* =========================================================
    MOBILE
-========================================== */
+   ========================================================= */
 
 @media (max-width: 390px) {
 
     .hero-countdown {
+        width: calc(100% - 20px);
+
         margin-left: 10px;
         margin-right: 10px;
 
@@ -302,53 +418,80 @@
         padding-right: 5px;
     }
 
+
     .countdown-grid {
         gap: 3px;
     }
 
+
     .time-box {
-        width: 65px;
-        height: 65px;
-        flex-basis: 65px;
+        width: 59px;
+
+        height: 59px;
+
+        min-width: 59px;
+
+        flex-basis: 59px;
     }
 
-    .time-box span {
-        font-size: 22px;
+
+    .time-number {
+        font-size: 18px;
     }
 
-    .time-box small {
-        font-size: 6px;
+
+    .time-label {
+        font-size: 5.5px;
     }
+
 
     .time-heart {
-        width: 11px;
-        flex-basis: 11px;
-        font-size: 11px;
+        font-size: 10px;
     }
-
 }
 
 
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
 @media (max-width: 340px) {
 
+    .hero-countdown {
+        width: calc(100% - 14px);
+
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+
+
+    .countdown-grid {
+        gap: 2px;
+    }
+
+
     .time-box {
-        width: 58px;
-        height: 58px;
-        flex-basis: 58px;
+        width: 52px;
+
+        height: 52px;
+
+        min-width: 52px;
+
+        flex-basis: 52px;
     }
 
-    .time-box span {
-        font-size: 19px;
+
+    .time-number {
+        font-size: 16px;
     }
 
-    .time-box small {
+
+    .time-label {
         font-size: 5px;
     }
 
-    .time-heart {
-        width: 8px;
-        flex-basis: 8px;
-        font-size: 9px;
-    }
 
+    .time-heart {
+        font-size: 8px;
+    }
 }
